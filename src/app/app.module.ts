@@ -5,19 +5,21 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material';
-import { MainMenuComponent } from './main-menu/main-menu.component';
+import { MatToolbarModule, MatMenuModule, MatButtonModule } from '@angular/material';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

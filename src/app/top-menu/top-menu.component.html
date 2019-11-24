@@ -1,19 +1,11 @@
-<mat-toolbar color="primary">
-    <span>AutoGrade</span>
+<mat-toolbar color="primary" class="app-header">
+  <span>AutoGrade</span>
 
-    <!-- This fills the remaining space of the current row -->
-    <span class="fill-remaining-space"></span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
 
-    <!-- 2 levels menu example -->
-    <!-- <button mat-button [matMenuTriggerFor]="menu">Drop Menu</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-    </mat-menu> -->
-
-    <button mat-button>Login</button>
-    <button mat-button>Register</button>
-
-
-  </mat-toolbar>
-
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+  </span>
+</mat-toolbar>

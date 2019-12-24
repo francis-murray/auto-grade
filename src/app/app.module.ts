@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 /* Routing */
 import { AppRoutingModule } from './app-routing.module';
@@ -20,13 +21,16 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { SoumissionComponent } from './components/soumission/soumission.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TopMenuComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    SoumissionComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatFileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent],

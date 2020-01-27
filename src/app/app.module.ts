@@ -21,7 +21,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { SoumissionComponent } from './components/soumission/soumission.component';
+import { SubmitAssignmentComponent } from './components/submit-assignment/submit-assignment.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
 import { MatExpansionModule } from '@angular/material';
 
@@ -32,7 +32,7 @@ import { MatExpansionModule } from '@angular/material';
     TopMenuComponent,
     LogInComponent,
     RegisterComponent,
-    SoumissionComponent,
+    SubmitAssignmentComponent,
     AssignmentComponent
   ],
   imports: [

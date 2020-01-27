@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubmitAssignmentComponent } from './submit-assignment.component';
 
-describe('SoumissionComponent', () => {
+describe('SubmitAssignmentComponent', () => {
   let component: SubmitAssignmentComponent;
   let fixture: ComponentFixture<SubmitAssignmentComponent>;
 

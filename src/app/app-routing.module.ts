@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SubmitAssignmentComponent } from './components/submit-assignment/submit-assignment.component';
-import { AssignmentComponent} from './components/assignment/assignment.component';
+import { ViewAssignmentComponent} from './components/view-assignment/view-assignment.component';
 
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'submit-assignment', component:  SubmitAssignmentComponent},
-  { path: 'assignment', component: AssignmentComponent}
+  { path: 'view-assignment', component: ViewAssignmentComponent}
 ];
 
 @NgModule({

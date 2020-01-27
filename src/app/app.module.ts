@@ -22,8 +22,8 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SoumissionComponent } from './components/soumission/soumission.component';
-import { AssignementComponent } from './components/assignement/assignement.component';
-import {MatExpansionModule} from '@angular/material';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { MatExpansionModule } from '@angular/material';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import {MatExpansionModule} from '@angular/material';
     LogInComponent,
     RegisterComponent,
     SoumissionComponent,
-    AssignementComponent
+    AssignmentComponent
   ],
   imports: [
     BrowserModule,

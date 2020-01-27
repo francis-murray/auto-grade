@@ -23,7 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SoumissionComponent } from './components/soumission/soumission.component';
 import { AssignementComponent } from './components/assignement/assignement.component';
-import {MatExpansionModule} from '@angular/material';
+import { MatExpansionModule, MatSnackBarModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import {MatExpansionModule} from '@angular/material';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatFileUploadModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

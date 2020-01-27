@@ -10,6 +10,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+
 /* Forms Module */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -23,7 +24,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SoumissionComponent } from './components/soumission/soumission.component';
 import { AssignementComponent } from './components/assignement/assignement.component';
-import {MatExpansionModule} from '@angular/material';
+import {MatExpansionModule, MatProgressSpinnerModule} from '@angular/material';
+import {ViewScoreComponent} from './components/view-score/view-score.component';
 
 
 @NgModule({
@@ -33,8 +35,8 @@ import {MatExpansionModule} from '@angular/material';
     LogInComponent,
     RegisterComponent,
     SoumissionComponent,
-    AssignementComponent
-  ],
+    AssignementComponent,
+    ViewScoreComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -45,7 +47,8 @@ import {MatExpansionModule} from '@angular/material';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatFileUploadModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

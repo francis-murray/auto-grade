@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Evaluator } from '../models/users.model';
+import { Evaluator } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

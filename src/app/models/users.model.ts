@@ -25,7 +25,6 @@ export interface Evaluator extends User {
 export interface Candidate extends User {
   user_id: string;
   organisation: string;
-  groupsInCharge: Array<string>;
-  assignmentsCreated: Array<string>;
+  candidateGroupsField: Array<string>;
 }
 

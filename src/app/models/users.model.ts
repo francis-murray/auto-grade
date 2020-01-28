@@ -1,5 +1,3 @@
-import { GroupAst } from '@angular/animations/browser/src/dsl/animation_ast';
-
 export interface User {
   _id: string;
   name: string;

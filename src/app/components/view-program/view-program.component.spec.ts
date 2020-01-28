@@ -1,7 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewProgramComponent } from './view-program.component';
+import { FormControl } from '@angular/forms';
 
+export class SelectProgram{
+  panelProgram = new FormControl('')
+
+  triggerQuerryProgram(){
+    
+  }
+}
 describe('ViewProgramComponent', () => {
   let component: ViewProgramComponent;
   let fixture: ComponentFixture<ViewProgramComponent>;

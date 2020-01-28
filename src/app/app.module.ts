@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
+import { HttpClientModule } from '@angular/common/http';
 
 /* Routing */
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularMaterialModule } from './angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatExpansionModule, MatSnackBarModule } from '@angular/material';
 
 /* Forms Module */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,17 +19,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
 
-/* Components */
+/* Custom Components */
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-
-import { MatExpansionModule, MatSnackBarModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-
 import { SubmitAssignmentComponent } from './components/submit-assignment/submit-assignment.component';
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
-
+import { ViewCalendarComponent } from './components/view-calendar/view-calendar.component';
 
 
 @NgModule({
@@ -37,7 +35,8 @@ import { ViewAssignmentComponent } from './components/view-assignment/view-assig
     LogInComponent,
     RegisterComponent,
     SubmitAssignmentComponent,
-    ViewAssignmentComponent
+    ViewAssignmentComponent,
+    ViewCalendarComponent
   ],
   imports: [
     BrowserModule,

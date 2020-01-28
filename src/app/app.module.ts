@@ -25,6 +25,7 @@ import { SubmitAssignmentComponent } from './components/submit-assignment/submit
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
 import { MatExpansionModule } from '@angular/material';
 import { ViewCalendarComponent } from './components/view-calendar/view-calendar.component';
+import { ViewProgramComponent } from './components/view-program/view-program.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ViewCalendarComponent } from './components/view-calendar/view-calendar.
     RegisterComponent,
     SubmitAssignmentComponent,
     ViewAssignmentComponent,
-    ViewCalendarComponent
+    ViewCalendarComponent,
+    ViewProgramComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,21 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Score</mat-card-title>
-    </mat-card-header>
-    <mat-progress-spinner
-      class="example-margin"
-      [value]="93">
-    </mat-progress-spinner>
-    <mat-progress-spinner
-      class="example-margin"
-      [value]="90">
-    </mat-progress-spinner>
-    <div style="position:relative; top: -60px; left: 40px;"> 90 </div>
-  </mat-card>
-</div>
+<mat-card>
+    <div class="title">
+      <mat-card-title>Nom de l'assignment</mat-card-title>
+      <mat-card-subtitle>DeadLine XX/XX/XX</mat-card-subtitle>
+    </div>
+    <mat-card-content>
+      <div>
+        <mat-progress-spinner
+          class="Spinner"
+          [value]="90">
+        </mat-progress-spinner>
+        <div style="position:relative; top: -58px; left: 40px;"> 90 </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <p>correcteur Mr XXXXXXXXX</p>
+    </mat-card-footer>
+</mat-card>
+
+
+

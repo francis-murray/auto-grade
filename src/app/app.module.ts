@@ -24,6 +24,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { SubmitAssignmentComponent } from './components/submit-assignment/submit-assignment.component';
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
 import { MatExpansionModule } from '@angular/material';
+import { ViewCalendarComponent } from './view-calendar/view-calendar.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatExpansionModule } from '@angular/material';
     LogInComponent,
     RegisterComponent,
     SubmitAssignmentComponent,
-    ViewAssignmentComponent
+    ViewAssignmentComponent,
+    ViewCalendarComponent
   ],
   imports: [
     BrowserModule,

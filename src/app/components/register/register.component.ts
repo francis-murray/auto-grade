@@ -11,14 +11,8 @@ import { MatSnackBar } from '@angular/material';
 export class RegisterComponent implements OnInit {
 
   roles: any = ['Evaluator', 'Candidate'];
+  evaluator = {} as Evaluator;
   selectedRole: string;
-  evaluator: Evaluator = {
-    name: '',
-    lastname: '',
-    email: '',
-    password: '',
-    organisation: '',
-  };
 
   isFetching = false;
 
@@ -30,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     // Evaluator role
-    if (this.selectedRole === this.roles[0]) {
+    if (this.selectedRole === 'Evaluator') {
 
       this.isFetching = true;
       this.usersService.createEvaluator(this.evaluator).subscribe(responseData => {
@@ -48,7 +42,7 @@ export class RegisterComponent implements OnInit {
       });
 
     // Candidate role
-     } else if (this.selectedRole === this.roles[1]){
+     } else if (this.selectedRole === 'Candidate') {
       this.snackBar.open('No API route defined to register Candidates yet...', 'Close', {
         duration: 2000,
       });

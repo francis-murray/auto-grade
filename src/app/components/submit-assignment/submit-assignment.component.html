@@ -1,13 +1,13 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
       <mat-card-header>
-        <mat-card-title>Soumission</mat-card-title>
+        <mat-card-title>Submit Assignment</mat-card-title>
       </mat-card-header>
 
       <form class="example-form">
 
           <mat-form-field class="example-full-width">
-              <mat-label>Choose your exercice</mat-label>
+              <mat-label>Choose your exercise</mat-label>
               <!-- <mat-select [(value)]="selected"> -->
               <mat-select>
                       <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
@@ -19,18 +19,18 @@
                 <label for="singleFile">Upload file</label>
                 <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
                 <br>
-                 
+
                 <mat-file-upload-queue #fileUploadQueue
                     [fileAlias]="'file'"
                     [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
-                 
+
                     <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
                 </mat-file-upload-queue>
-    
+
             </div>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Commentaire">
+                <input matInput placeholder="Comment">
             </mat-form-field>
 
 

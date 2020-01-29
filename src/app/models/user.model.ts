@@ -1,6 +1,6 @@
 export interface User {
   _id: string;
-  name: string;
+  firstname: string;
   lastname: string;
   password: string;
   email: string;
@@ -11,8 +11,8 @@ export interface User {
 }
 
 enum UserTypeEnum {
-  evaluator = 'Evaluator',
-  candidate = 'Candidate'
+  evaluator = 'evaluator',
+  candidate = 'candidate'
 }
 
 export interface Evaluator extends User {

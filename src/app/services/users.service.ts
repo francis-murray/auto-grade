@@ -7,11 +7,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
 
+
   constructor(private http: HttpClient) { }
+
+
+  authenticateUser(email: string, password: string) {
+    return this.http.post(
+      'http://127.0.0.1:5000/users/authenticate',
+      { email, password }
+      );
+  }
+
 
   createEvaluator(evaluator: Evaluator) {
     return this.http.post(
-      'http://15.188.76.209/users/Eval/Register',
+      'http://127.0.0.1:5000/users/evaluator/register',
       evaluator
       );
   }

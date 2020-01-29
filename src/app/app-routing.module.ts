@@ -6,6 +6,7 @@ import { SubmitAssignmentComponent } from './components/submit-assignment/submit
 import { ViewAssignmentComponent} from './components/view-assignment/view-assignment.component';
 import {ViewCalendarComponent} from './components/view-calendar/view-calendar.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
+import { InviteCandidateComponent } from './components/invite-candidate/invite-candidate.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'submit-assignment', component:  SubmitAssignmentComponent},
   { path: 'view-assignment', component: ViewAssignmentComponent},
   { path: 'view-calendar', component: ViewCalendarComponent},
-  { path: 'view-program', component: ViewProgramComponent}
+  { path: 'view-program', component: ViewProgramComponent},
+  { path: 'invite-candidate', component: InviteCandidateComponent}
 ];
 
 @NgModule({

@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularMaterialModule } from './angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MatExpansionModule, MatSnackBarModule } from '@angular/material';
+import { MatExpansionModule, MatSnackBarModule, MatProgressSpinnerModule } from '@angular/material';
+
 
 /* Forms Module */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import {ViewScoreComponent} from './components/view-score/view-score.component';
 import { SubmitAssignmentComponent } from './components/submit-assignment/submit-assignment.component';
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
 import { ViewCalendarComponent } from './components/view-calendar/view-calendar.component';
@@ -36,7 +38,8 @@ import { ViewCalendarComponent } from './components/view-calendar/view-calendar.
     RegisterComponent,
     SubmitAssignmentComponent,
     ViewAssignmentComponent,
-    ViewCalendarComponent
+    ViewCalendarComponent,
+    ViewScoreComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { ViewCalendarComponent } from './components/view-calendar/view-calendar.
     FlexLayoutModule,
     MatFileUploadModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     MatSnackBarModule
   ],

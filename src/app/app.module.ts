@@ -28,6 +28,7 @@ import {ViewScoreComponent} from './components/view-score/view-score.component';
 import { SubmitAssignmentComponent } from './components/submit-assignment/submit-assignment.component';
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
 import { ViewCalendarComponent } from './components/view-calendar/view-calendar.component';
+import { ViewProgramComponent } from './components/view-program/view-program.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ViewCalendarComponent } from './components/view-calendar/view-calendar.
     SubmitAssignmentComponent,
     ViewAssignmentComponent,
     ViewCalendarComponent,
-    ViewScoreComponent
+    ViewScoreComponent,
+    ViewProgramComponent
   ],
   imports: [
     BrowserModule,

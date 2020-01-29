@@ -8,6 +8,8 @@ import { SubmitAssignmentComponent } from './components/submit-assignment/submit
 import { ViewAssignmentComponent} from './components/view-assignment/view-assignment.component';
 import {ViewCalendarComponent} from './components/view-calendar/view-calendar.component';
 import {ViewScoreComponent} from './components/view-score/view-score.component';
+import { ViewProgramComponent } from './components/view-program/view-program.component';
+
 
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'view-assignment', component: ViewAssignmentComponent},
   { path: 'view-calendar', component: ViewCalendarComponent},
   { path : 'view-score', component: ViewScoreComponent}
+  { path: 'view-program', component: ViewProgramComponent}
 ];
 
 @NgModule({

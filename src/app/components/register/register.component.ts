@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Evaluator  } from 'src/app/models/users.model';
+import { Evaluator  } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatSnackBar } from '@angular/material';
 

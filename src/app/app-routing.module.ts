@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'submit-assignment', component:  SubmitAssignmentComponent},
   { path: 'view-assignment', component: ViewAssignmentComponent},
   { path: 'view-calendar', component: ViewCalendarComponent},
-  { path : 'view-score', component: ViewScoreComponent}
+  { path : 'view-score', component: ViewScoreComponent},
   { path: 'view-program', component: ViewProgramComponent}
 ];
 

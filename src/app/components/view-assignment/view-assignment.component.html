@@ -5,17 +5,17 @@
       <mat-list role="list">
         <mat-list-item role="listitem">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Name" value="Assignment Title" disabled>
+            <input matInput placeholder="Name" value="{{ name }}" disabled>
           </mat-form-field>
         </mat-list-item>
         <mat-list-item role="listitem">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Evaluator" value="Nom Prenom" disabled>
+            <input matInput placeholder="Evaluator" value="{{ Evaluator }}" disabled>
           </mat-form-field>
         </mat-list-item>
         <mat-list-item role="listitem">
           <mat-form-field class="example-full-width">
-            <input matInput="time" placeholder="Deadline" value="12/12/12" disabled>
+            <input matInput="time" placeholder="Deadline" value="{{ Deadline }}" disabled>
           </mat-form-field>
         </mat-list-item>
       </mat-list>
@@ -25,7 +25,7 @@
             Assignement Description
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat convallis scelerisque. Nulla quis neque ac nulla porta consectetur ut semper diam. In hac habitasse platea dictumst. Sed tempor facilisis aliquet. Aliquam non lorem in diam cursus viverra. Donec fermentum mollis nulla, eget elementum nunc gravida faucibus. Integer sollicitudin sagittis quam, tempus dictum nunc varius ut. Quisque finibus ligula a ultrices dictum.</p>
+        <p>{{ Description }}</p>
       </mat-expansion-panel>
 
 

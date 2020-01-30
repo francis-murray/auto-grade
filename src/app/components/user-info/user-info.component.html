@@ -1,0 +1,45 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>User Info</mat-card-title>
+    </mat-card-header>
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="First Name" [(ngModel)]="evaluator.name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Last Name" [(ngModel)]='evaluator.lastname'>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" [(ngModel)]='evaluator.email'>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" [(ngModel)]='evaluator.password'>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Organisation" [(ngModel)]='evaluator.organisation'>
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choose a role...</mat-label>
+          <mat-select [(value)]="selectedRole">
+                  <mat-option [value]="roles" *ngFor="let roles of roles">{{roles}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <!-- <button mat-stroked-button color="accent" class="btn-block" (click)="onRegister()">Register</button> -->
+
+      <p *ngIf="isFetching">Loading... </p>
+  </mat-card>
+
+
+</div>

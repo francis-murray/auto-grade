@@ -10,6 +10,7 @@ import {ViewCalendarComponent} from './components/view-calendar/view-calendar.co
 import {ViewScoreComponent} from './components/view-score/view-score.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
 // import { AuthComponent } from './auth/auth.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   // { path: 'auth', component: AuthComponent },
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'user-info', component: UserInfoComponent },
   { path: 'submit-assignment', component:  SubmitAssignmentComponent},
   { path: 'view-assignment', component: ViewAssignmentComponent},
   { path: 'view-calendar', component: ViewCalendarComponent},

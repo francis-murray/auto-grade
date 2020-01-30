@@ -29,7 +29,8 @@ import { SubmitAssignmentComponent } from './components/submit-assignment/submit
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
 import { ViewCalendarComponent } from './components/view-calendar/view-calendar.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
-import { AuthComponent } from './auth/auth.component';
+// import { AuthComponent } from './auth/auth.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
 import { JwtModule } from '@auth0/angular-jwt';
@@ -45,7 +46,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     ViewCalendarComponent,
     ViewScoreComponent,
     ViewProgramComponent,
-    AuthComponent
+    // AuthComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

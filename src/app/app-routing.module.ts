@@ -9,6 +9,7 @@ import { ViewAssignmentComponent} from './components/view-assignment/view-assign
 import {ViewCalendarComponent} from './components/view-calendar/view-calendar.component';
 import {ViewScoreComponent} from './components/view-score/view-score.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'user-info', component: UserInfoComponent },
   { path: 'submit-assignment', component:  SubmitAssignmentComponent},
   { path: 'view-assignment', component: ViewAssignmentComponent},
   { path: 'view-calendar', component: ViewCalendarComponent},

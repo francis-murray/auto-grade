@@ -32,6 +32,8 @@ import { ViewProgramComponent } from './components/view-program/view-program.com
 import { AuthComponent } from './auth/auth.component';
 
 
+import { JwtModule } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,16 @@ import { AuthComponent } from './auth/auth.component';
     MatExpansionModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['localhost'],
+        blacklistedRoutes: ['localhost/auth/login']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -17,6 +17,14 @@ export class User {
   }
 }
 
+export interface LoginResponse {
+  access_token: string;
+  data: any;
+  name: string;
+  status: string;
+  message: string;
+}
+
 export enum UserTypeEnum {
   evaluator = 'evaluator',
   candidate = 'candidate'

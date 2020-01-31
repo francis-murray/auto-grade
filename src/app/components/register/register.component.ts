@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class RegisterComponent implements OnInit {
 
+
   roles: any = ['Evaluator', 'Candidate'];
   evaluator = {} as Evaluator;
   selectedRole: string;

@@ -13,6 +13,6 @@ export class UsersService {
     return this.http.post(
       'http://15.188.76.209/users/Eval/Register',
       evaluator
-      );
+    );
   }
 }

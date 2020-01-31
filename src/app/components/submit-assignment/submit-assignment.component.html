@@ -3,14 +3,13 @@
       <mat-card-header>
         <mat-card-title>Submit Assignment</mat-card-title>
       </mat-card-header>
-
       <form class="example-form">
 
           <mat-form-field class="example-full-width">
             <mat-label>Choose your groupe</mat-label>
-            <!-- <mat-select [(value)]="selected"> -->
-            <mat-select>
-              <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
+            <!-- <mat-select > -->
+            <mat-select (selectionChange)="onChange()" [(value)]="selectedGroup">
+              <mat-option *ngFor="let groupe of Object.groups" [value]="groupe.id">{{groupe.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -19,7 +18,7 @@
               <mat-label>Choose your exercise</mat-label>
               <!-- <mat-select [(value)]="selected"> -->
               <mat-select>
-                      <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
+                      <mat-option *ngFor="let assignement of this.Request.group.assignments" [value]="assignement.id">{{assignement.name}}
                 </mat-option>
               </mat-select>
           </mat-form-field>

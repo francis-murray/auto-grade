@@ -29,8 +29,11 @@ import { SubmitAssignmentComponent } from './components/submit-assignment/submit
 import { ViewAssignmentComponent } from './components/view-assignment/view-assignment.component';
 import { ViewCalendarComponent } from './components/view-calendar/view-calendar.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
+// import { AuthComponent } from './auth/auth.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 
+
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     ViewCalendarComponent,
     ViewScoreComponent,
     ViewProgramComponent,
+    // AuthComponent,
     UserInfoComponent
   ],
   imports: [
@@ -58,7 +62,16 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     MatExpansionModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['localhost'],
+        blacklistedRoutes: ['localhost/auth/login']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

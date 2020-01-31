@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Evaluator } from 'src/app/models/user.model';
-import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-user-info',
@@ -9,19 +9,23 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UserInfoComponent implements OnInit {
 
-
-  roles: any = ['Evaluator', 'Candidate'];
-  evaluator = {} as Evaluator;
-  selectedRole: string;
-
+  dataFromServer: any = [];
   isFetching = false;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.getUserInfo();
   }
 
+  getUserInfo() {
+    this.authService.getInfoUser().subscribe(response => {
+      this.dataFromServer = response;
+      console.log('dataFromServer: ', this.dataFromServer);
+    });
+  }
 
-
-
+  logout() {
+    this.authService.logout();
+  }
 }

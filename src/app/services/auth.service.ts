@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Subject, throwError, Observable } from 'rxjs';
-import { User, UserTypeEnum, LoginResponse } from '../models/user.model';
+import { User, UserTypeEnum } from '../models/user.model';
 import { tap, catchError, retry } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,13 @@ import { Router } from '@angular/router';
 //   status: number;
 //   confirm_token: string;
 // }
+
+
+export interface LoginResponse {
+  // status: number;
+  auth_token: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +45,15 @@ export class AuthService {
     })
   };
 
+   // Http Options with TOKEN
+   httpOptionsTOKEN = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-API-KEY': localStorage.getItem('auth_token')
+    })
+  };
+
+
   // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -63,9 +79,10 @@ export class AuthService {
 
   // After login save token and other values (if any) in localStorage
   setUser(resp: LoginResponse) {
-    localStorage.setItem('name', resp.name);
-    localStorage.setItem('access_token', resp.access_token);
-    this.router.navigate(['/dashboard']);
+    // localStorage.setItem('status', resp.status);
+    localStorage.setItem('auth_token', resp.auth_token);
+    this.router.navigate(['/user-info']);
+    console.log('SET USER: localStorage.getItem(\'auth_token\'): ', localStorage.getItem('auth_token'));
   }
 
   // check if token is set
@@ -79,103 +96,10 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  getData(data): Observable<LoginResponse> {
-    return this.http
-      .post<LoginResponse>(this.basePath + 'users/view-assignment', data, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
+  getInfoUser() {
+    console.log('localStorage.getItem(\'auth_token\'): ', localStorage.getItem('auth_token'));
+    console.log('auth.service > this.httpOptionsTOKEN: ', this.httpOptionsTOKEN);
+    return this.http.get(this.basePath + 'users/get/info', this.httpOptionsTOKEN);
   }
-
-
-
-
-
-
-
-
-
-  // login(email: string, password: string) {
-  //   return this.http.post<AuthResponseData>(
-  //     this.basePath + 'users/authenticate',
-  //     {
-  //       email,
-  //       password
-  //     }
-  //     ).pipe(
-  //       tap(responseData => {
-  //         this.handleAuthentication(
-  //           this.firstname,
-  //           this.lastname,
-  //           email,
-  //           password,
-  //           this.confirmed,
-  //           this.type,
-  //           this.organisation,
-  //           this.user_id,
-  //           responseData.confirm_token
-  //         )
-  //       })
-  //     );
-  // }
-
-
-
-
-
-  // signup(firstname: string, lastname: string, email: string, password: string, organisation: string) {
-  //   return this.http.post<AuthResponseData>(
-  //     this.basePath + 'users/evaluator/register',
-  //     {
-  //       firstname,
-  //       lastname,
-  //       email,
-  //       password,
-  //       organisation
-  //     }
-  //   ).pipe(
-  //     tap(responseData => {
-  //       this.handleAuthentication(
-  //         firstname,
-  //         lastname,
-  //         email,
-  //         password,
-  //         this.confirmed,
-  //         this.type,
-  //         organisation,
-  //         this.user_id,
-  //         responseData.confirm_token
-  //       )
-  //     })
-  //   );
-  // }
-
-//   private handleAuthentication(
-//     firstname: string,
-//     lastname: string,
-//     email: string,
-//     password: string,
-//     confirmed: boolean,
-//     type: UserTypeEnum,
-//     organisation: string,
-//     // tslint:disable-next-line: variable-name
-//     user_id: string,
-//     token: string
-//     ) {
-//     const user = new User(
-//       firstname,
-//       lastname,
-//       email,
-//       password,
-//       confirmed,
-//       type,
-//       organisation,
-//       user_id,
-//       token
-//     );
-//     console.log(user);
-//     this.user.next(user);
-//   }
 }
 

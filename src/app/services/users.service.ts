@@ -1,35 +1,40 @@
-import { Injectable } from '@angular/core';
-import { Evaluator, Candidate } from '../models/user.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { Evaluator, Candidate } from "../models/user.model";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { AuthResponse } from "./auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UsersService {
-
-  // API path
-  basePath = 'http://127.0.0.1:5000';
-
+  apiBasePath = "http://127.0.0.1:5000";
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-API-KEY': localStorage.getItem('auth_token')
+      "Content-Type": "application/json",
+      "X-API-KEY": localStorage.getItem("auth_token")
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-
-  // This route allow a user to have an API KEY that will allows him to do request
-  // authenticateUser(email: string, password: string) {
-  //   return this.http.post(
-  //     this.basePath + /users/authenticate',
-  //     { email, password }
-  //     );
-  // }
-
-
+  //
+  /**
+   * Function that sends a POST request to the api and returns an response containing
+   * a status code and an API KEY, which will allow the user to perform secured requests
+   * @param email user's email
+   * @param password user's password
+   */
+  authenticateUser(email: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(
+      this.apiBasePath + "/users/authenticate",
+      {
+        email: email,
+        password: password
+      }
+    );
+  }
 
   /**
    * Register as a candidate after that the evaluator added the candidate
@@ -37,28 +42,34 @@ export class UsersService {
    */
   registerCandidate(candidate: Candidate) {
     return this.http.put(
-      this.basePath + '/users/candidate/confirmation/' + localStorage.getItem('auth_token'),
+      this.apiBasePath +
+        "/users/candidate/confirmation/" +
+        localStorage.getItem("auth_token"),
       candidate
-      );
+    );
   }
 
   /**
-   * Delete by a candidate to delete his current account
+   * Delete by a candidate to delete his current account. Requires an authentication token.
    */
   deleteCandidate() {
     // not implemented yet
   }
 
   /**
-   * This methods adds a candidate to a group
+   * This methods adds a candidate to a group. Requires an authentication token.
    * @param mail_candidate mail of a candidate
    * @param group_name group of the candidate
    */
-  addCandidate(mail_candidate: string, group_name: string) {
+  addCandidate(mailCandidate: string, groupName: string) {
     return this.http.post(
-      this.basePath + '/users/evaluator/add/candidate',
-      {mail_candidate, group_name},
-      );
+      this.apiBasePath + "/users/evaluator/add/candidate",
+      {
+        mail_candidate: mailCandidate,
+        group_name: groupName
+      },
+      this.httpOptions
+    );
   }
 
   /**
@@ -66,53 +77,64 @@ export class UsersService {
    */
   confirmEvaluator() {
     return this.http.put(
-      this.basePath + '/users/evaluator/confirmation/' + localStorage.getItem('auth_token'),
+      this.apiBasePath +
+        "/users/evaluator/confirmation/" +
+        localStorage.getItem("auth_token"),
       {}
-      );
+    );
   }
-
 
   /**
    * Register as an evaluator
-   * @param evaluator evaluator instance
+   * @param firstName of evaluator
+   * @param lastName of evaluator
+   * @param email of evaluator
+   * @param password of evaluator
+   * @param organisation of evaluator
    */
-  registerEvaluator(evaluator: Evaluator) {
+  registerEvaluator(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    organisation: string
+  ) {
     return this.http.post(
-      this.basePath + '/users/evaluator/register',
-      evaluator,
+      this.apiBasePath + "/users/evaluator/register",
+      {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        password: password,
+        organisation: organisation
+      },
       this.httpOptions
-      );
+    );
   }
-
 
   /**
-   * This route allow current user to retrieve his data, Evaluators and candidates can call this route
+   * This route allow current user to retrieve his data, Evaluators and candidates can call this route.
+   * Requires an authentication token.
    */
   getUserInfo() {
-    console.log('localStorage: ', localStorage);
-    console.log('localStorage.getItem(\'auth_token\'): ', localStorage.getItem('auth_token'));
-    console.log('auth.service > this.httpOptions: ', this.httpOptions);
-    return this.http.get(this.basePath + 'users/get/info', this.httpOptions);
+    return this.http.get(
+      this.apiBasePath + "/users/get/info",
+      this.httpOptions
+    );
   }
-
-
 
   /**
    * Update those fields for a user, If there is no changes, you have to let them empty, otherwise it will be updated.
-   * Evaluators and candidates can call it.
+   * Evaluators and candidates can call it. Requires an authentication token.
    * @param firstname User's first name
    * @param lastname Users's last name
    * @param organisation User's orgnanisation
    */
   updateUser(firstname: string, lastname: string, organisation: string) {
     return this.http.put(
-      this.basePath + '/users/update',
+      this.apiBasePath + "/users/update",
       { firstname, lastname, organisation },
       this.httpOptions
-      );
+    );
   }
-
-
-
-
 }

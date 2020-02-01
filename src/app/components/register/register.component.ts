@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   onEvalRegister() {
       this.isFetching = true;
-      this.usersService.createEvaluator(this.evaluator).subscribe(responseData => {
+      this.usersService.registerEvaluator(this.evaluator).subscribe(responseData => {
         this.isFetching = false;
         console.log(responseData);
         this.snackBar.open('Successful Registration! Please sign in', 'Close', {

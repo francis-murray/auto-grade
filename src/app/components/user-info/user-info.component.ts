@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsersService } from 'src/app/services/users.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class UserInfoComponent implements OnInit {
 
   isFetching = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private usersService: UsersService) { }
 
   ngOnInit() {
     this.getUserInfo();
@@ -32,7 +33,7 @@ export class UserInfoComponent implements OnInit {
 
   getUserInfo() {
     console.log('getUserInfo()... ');
-    this.authService.getInfoUser().subscribe(response => {
+    this.usersService.getUserInfo().subscribe(response => {
       this.dataFromServer = response;
       console.log('dataFromServer: ', this.dataFromServer);
     });

@@ -59,12 +59,12 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  getInfoUser() {
-    console.log('localStorage: ', localStorage);
-    console.log('localStorage.getItem(\'auth_token\'): ', localStorage.getItem('auth_token'));
-    console.log('auth.service > this.httpOptions: ', this.httpOptions);
-    return this.http.get(this.basePath + 'users/get/info', this.httpOptions);
-  }
+  // getInfoUser() {
+  //   console.log('localStorage: ', localStorage);
+  //   console.log('localStorage.getItem(\'auth_token\'): ', localStorage.getItem('auth_token'));
+  //   console.log('auth.service > this.httpOptions: ', this.httpOptions);
+  //   return this.http.get(this.basePath + 'users/get/info', this.httpOptions);
+  // }
 
   // Code copied from Angular guide, HttpClient documentation
   private handleError(error: HttpErrorResponse) {

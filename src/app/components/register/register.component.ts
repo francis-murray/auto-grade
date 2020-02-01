@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Evaluator  } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,23 +17,21 @@ export class RegisterComponent implements OnInit {
 
   isFetching = false;
 
-  constructor(private usersService: UsersService, private snackBar: MatSnackBar) { }
+  constructor(private usersService: UsersService, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit() {
   }
 
 
-  onRegister() {
-    // Evaluator role
-    if (this.selectedRole === 'Evaluator') {
-
+  onEvalRegister() {
       this.isFetching = true;
       this.usersService.createEvaluator(this.evaluator).subscribe(responseData => {
         this.isFetching = false;
         console.log(responseData);
-        this.snackBar.open('Successful Registration', 'Close', {
+        this.snackBar.open('Successful Registration! Please sign in', 'Close', {
           duration: 2000,
         });
+        this.router.navigate(['/login']);
       }, error => {
         this.isFetching = false;
         this.snackBar.open(error.error.error, 'Close', {
@@ -40,16 +39,5 @@ export class RegisterComponent implements OnInit {
         });
         console.log(error);
       });
-
-    // Candidate role
-     } else if (this.selectedRole === 'Candidate') {
-      this.snackBar.open('No API route defined to register Candidates yet...', 'Close', {
-        duration: 2000,
-      });
-     } else {
-      this.snackBar.open('Please select a role.', 'Close', {
-        duration: 2000,
-      });
-    }
-    }
+  }
 }

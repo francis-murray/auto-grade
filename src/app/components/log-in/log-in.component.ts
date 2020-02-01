@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-log-in',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LogInComponent implements OnInit {
 
-  model: any = {};
+  user = {} as User;
 
   constructor(private authService: AuthService) { }
 
@@ -17,30 +18,16 @@ export class LogInComponent implements OnInit {
   }
 
   login() {
-    // this.model.action = 'login';
-    this.authService.loginForm(this.model.email, this.model.password)
+    this.authService.loginForm(this.user.email, this.user.password)
       .subscribe(response => {
         console.log('response: ', response);
-        // if (response.status === 0) {
+        if (response.status === 0) {
           console.log('this.authService.setUser(response)');
           this.authService.setUser(response);
-        // }
+        }
       }, error => {
         console.error(error);
       });
   }
-
-
-
-
-  // onLogin() {
-  //   this.usersService.authenticateUser(this.user.email, this.user.password)
-  //   .subscribe(responseData => {
-  //     console.log(responseData);
-  //   })
-
-  //   console.log(this.user);
-  // }
-
 
 }

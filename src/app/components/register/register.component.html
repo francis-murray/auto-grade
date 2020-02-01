@@ -25,18 +25,18 @@
             <input matInput placeholder="Organisation" [(ngModel)]='evaluator.organisation'>
           </mat-form-field>
 
-
+<!--
           <mat-form-field class="example-full-width">
             <mat-label>Choose a role...</mat-label>
             <mat-select [(value)]="selectedRole">
                     <mat-option [value]="roles" *ngFor="let roles of roles">{{roles}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
 
         </mat-card-content>
 
-        <button mat-stroked-button color="accent" class="btn-block" (click)="onRegister()">Register</button>
+        <button mat-stroked-button color="accent" class="btn-block" (click)="onEvalRegister()">Register</button>
 
         <p *ngIf="isFetching">Loading... </p>
     </mat-card>

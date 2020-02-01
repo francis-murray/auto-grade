@@ -1,33 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/user.model';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "src/app/services/auth.service";
+import { User } from "src/app/models/user.model";
+import { UsersService } from "src/app/services/users.service";
 
 @Component({
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.css']
+  selector: "app-log-in",
+  templateUrl: "./log-in.component.html",
+  styleUrls: ["./log-in.component.css"]
 })
 export class LogInComponent implements OnInit {
-
   user = {} as User;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private userService: UsersService
+  ) {}
 
   ngOnInit() {
     this.authService.logout();
   }
 
   login() {
-    this.authService.loginForm(this.user.email, this.user.password)
-      .subscribe(response => {
-        console.log('response: ', response);
-        if (response.status === 0) {
-          console.log('this.authService.setUser(response)');
-          this.authService.setUser(response);
+    this.userService
+      .authenticateUser(this.user.email, this.user.password)
+      .subscribe(
+        response => {
+          if (response.status === 0) {
+            this.authService.setUser(response);
+          }
+        },
+        error => {
+          console.error(error);
         }
-      }, error => {
-        console.error(error);
-      });
+      );
   }
-
 }

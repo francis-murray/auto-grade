@@ -19,14 +19,23 @@ export class AssignementsService {
 
   constructor(private http: HttpClient) { }
 
-  CreateAssignment(assignment : Assignment){
+  CreateAssignment(assignment : Assignment, file : File){
+    console.log(assignment.ios);
+
+    const fd = new FormData();
+    fd.append("test", file);
+    console.log(fd);
+
     return this.http.post(
       this.apiBasePath + "/assignments/evaluator/create",
       {
-        "name": assignment.name,
-        "description" : assignment.description,
-        "ios" : assignment.ios,
-        "assignmentFile" : assignment.filename
+        "name": "assignment.name",
+        "description" : "assignment.description",
+        "ios" : ["12 34 : 34"],
+        "assignmentFile" : fd,
+        "marking_scheme_file_size" : 12,
+        "marking_scheme_cpu_time" : 12,
+        "marking_scheme_memory_used" : 12
       },
       this.httpOptions
     );

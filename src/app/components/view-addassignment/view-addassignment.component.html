@@ -8,9 +8,9 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Choose your groupe</mat-label>
-        <!-- <mat-select [(value)]="selected"> -->
-        <mat-select>
-          <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
+        <!-- <mat-select > -->
+        <mat-select [(value)]="selected">
+          <mat-option [value]="groupes.id" *ngFor="let groupes of Groupe" >{{groupes.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -19,6 +19,7 @@
         <input
           matInput
           placeholder="name of assignement"
+          [(ngModel)]="assignment.name"
           name="name"
           required
         />
@@ -28,6 +29,7 @@
         <input
           matInput
           placeholder="description"
+          [(ngModel)]="assignment.description"
           name="name"
           required
         />
@@ -37,6 +39,7 @@
         <input
           matInput
           placeholder="ios"
+          [(ngModel)]="assignment.ios"
           name="name"
           required
         />
@@ -44,23 +47,14 @@
 
 
       <div>
-        <label for="singleFile">Upload file</label>
-        <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
-        <br>
-
-        <mat-file-upload-queue #fileUploadQueue
-                               [fileAlias]="'file'"
-                               [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
-
-          <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-        </mat-file-upload-queue>
-
+        <input type="file" (change)="onFileselected($event)" >
       </div>
 
       <mat-form-field class="example-full-width">
         <input
           matInput
           placeholder="Marking schame for the file size"
+          [(ngModel)]="assignment.marking_scheme_file_size"
           name="name"
           required
         />
@@ -70,6 +64,7 @@
         <input
           matInput
           placeholder="Marking schame for the cpu time used"
+          [(ngModel)]="assignment.marking_scheme_cpu_time"
           name="name"
           required
         />
@@ -79,13 +74,14 @@
         <input
           matInput
           placeholder="Marking schame for the memory used"
+          [(ngModel)]="assignment.marking_scheme_memory_used"
           name="name"
           required
         />
       </mat-form-field>
 
 
-      <button mat-stroked-button color="accent" class="btn-block">creation</button>
+      <button mat-stroked-button color="accent" class="btn-block" (click) = "addassignment()" >creation</button>
 
     </form>
   </mat-card>

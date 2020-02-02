@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Group} from "../../models/group.model";
 import {GroupsService} from "../../services/groups.service";
+import {AuthService} from "../../services/auth.service";
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-view-addgroup',
@@ -23,7 +24,7 @@ export class ViewAddgroupComponent implements OnInit {
     console.log(this.name);
       this.groupsService.createGroup(this.name).subscribe(
         response => {
-          if (response.status === 0) {
+          if (response === 0) {
             console.log("ajout reussis");
           }
         },

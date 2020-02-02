@@ -11,7 +11,7 @@
     <a mat-button routerLink="view-calendar" routerLinkActive="active">View Calendar</a>
     <a mat-button routerLink="view-score" routerLinkActive="active">Score</a>
     <a mat-button routerLink="view-program" routerLinkActive="active">View program</a>
-    <a mat-button routerLink="" routerLinkActive="active" (click)="logout()">Log out</a>
+    <a mat-button mat-raised-button routerLink="" routerLinkActive="active" (click)="logout()">Log out</a>
   </span>
 
   <span *ngIf="!isLoggedIn">

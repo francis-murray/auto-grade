@@ -22,13 +22,13 @@ export class AssignementsService {
     console.log(file);
 
     const fd = new FormData();
-    fd.append("name", "assignname");
-    fd.append("description", "desc");
-    fd.append("ios", JSON.stringify(["ios : ios"]));
+    fd.append("name", assignment.name);
+    fd.append("description", assignment.description);
+    fd.append("ios", JSON.stringify(assignment.ios));
     fd.append("assignmentFile", file, file.name)
-    fd.append("marking_scheme_file_size", "30");
-    fd.append("marking_scheme_cpu_time", "20");
-    fd.append("marking_scheme_memory_used", "50");
+    fd.append("marking_scheme_file_size", assignment.marking_scheme_file_size);
+    fd.append("marking_scheme_cpu_time", assignment.marking_scheme_cpu_time);
+    fd.append("marking_scheme_memory_used", assignment.marking_scheme_memory_used);
     console.log(fd);
 
     return this.http.post(

@@ -17,6 +17,7 @@ export class ViewAddassignmentComponent implements OnInit {
   assignment = {} as Assignment;
   selected : string = "";
   fileassignment : File;
+  ios : string ;
 
   constructor(private groupsService : GroupsService,
               private authService: AuthService,
@@ -27,12 +28,12 @@ export class ViewAddassignmentComponent implements OnInit {
 
   ngOnInit() {
     // console.log("getUserInfo()... ");
-    // this.groupsService.getallgroupEvaluator().subscribe(response => {
-    //   console.log("dataFromServer: ", response);
-    //   if(response.status === 0){
-    //       this.Groupe = response.groups;
-    //   }
-    // });
+    this.groupsService.getallgroupEvaluator().subscribe(response => {
+       console.log("dataFromServer: ", response);
+       if(response.status === 0){
+           this.Groupe = response.groups;
+       }
+    });
   }
 
   onFileselected(event) {
@@ -42,15 +43,7 @@ export class ViewAddassignmentComponent implements OnInit {
   }
 
   addassignment(){
-    console.log("add assignment ...");
-    console.log(this.selected);
-    console.log(this.fileassignment);
-    this.assignment.ios = ["3 : 12"];
-    console.log(this.assignment.marking_scheme_file_size);
-    console.log(this.assignment.marking_scheme_cpu_time);
-    console.log(this.assignment.marking_scheme_memory_used);
-
-
+    this.assignment.ios = [this.ios];
     this.createAssignment(this.assignment, this.fileassignment);
 
   }

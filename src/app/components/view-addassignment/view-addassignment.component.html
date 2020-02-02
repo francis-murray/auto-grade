@@ -30,7 +30,7 @@
           matInput
           placeholder="description"
           [(ngModel)]="assignment.description"
-          name="name"
+          name="description"
           required
         />
       </mat-form-field>
@@ -39,8 +39,8 @@
         <input
           matInput
           placeholder="ios"
-          [(ngModel)]="assignment.ios"
-          name="name"
+          [(ngModel)]="ios"
+          name="ios"
           required
         />
       </mat-form-field>
@@ -55,7 +55,7 @@
           matInput
           placeholder="Marking schame for the file size"
           [(ngModel)]="assignment.marking_scheme_file_size"
-          name="name"
+          name="size"
           required
         />
       </mat-form-field>
@@ -65,7 +65,7 @@
           matInput
           placeholder="Marking schame for the cpu time used"
           [(ngModel)]="assignment.marking_scheme_cpu_time"
-          name="name"
+          name="cpu"
           required
         />
       </mat-form-field>
@@ -75,7 +75,7 @@
           matInput
           placeholder="Marking schame for the memory used"
           [(ngModel)]="assignment.marking_scheme_memory_used"
-          name="name"
+          name="memory"
           required
         />
       </mat-form-field>

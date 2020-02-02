@@ -11,7 +11,6 @@ export class AssignementsService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json",
       "X-API-KEY": localStorage.getItem("auth_token")
     })
   };
@@ -20,23 +19,21 @@ export class AssignementsService {
   constructor(private http: HttpClient) { }
 
   CreateAssignment(assignment : Assignment, file : File){
-    console.log(assignment.ios);
+    console.log(file);
 
     const fd = new FormData();
-    fd.append("test", file);
+    fd.append("name", "assignname");
+    fd.append("description", "desc");
+    fd.append("ios", JSON.stringify(["ios : ios"]));
+    fd.append("assignmentFile", file, file.name)
+    fd.append("marking_scheme_file_size", "30");
+    fd.append("marking_scheme_cpu_time", "20");
+    fd.append("marking_scheme_memory_used", "50");
     console.log(fd);
 
     return this.http.post(
       this.apiBasePath + "/assignments/evaluator/create",
-      {
-        "name": "assignment.name",
-        "description" : "assignment.description",
-        "ios" : ["12 34 : 34"],
-        "assignmentFile" : fd,
-        "marking_scheme_file_size" : 12,
-        "marking_scheme_cpu_time" : 12,
-        "marking_scheme_memory_used" : 12
-      },
+      fd,
       this.httpOptions
     );
   }

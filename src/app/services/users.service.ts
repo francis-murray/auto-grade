@@ -99,17 +99,13 @@ export class UsersService {
     password: string,
     organisation: string
   ) {
-    return this.http.post(
-      this.apiBasePath + "/users/evaluator/register",
-      {
-        firstname: firstName,
-        lastname: lastName,
-        email: email,
-        password: password,
-        organisation: organisation
-      },
-      this.httpOptions
-    );
+    return this.http.post(this.apiBasePath + "/users/evaluator/register", {
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
+      organisation: organisation
+    });
   }
 
   /**

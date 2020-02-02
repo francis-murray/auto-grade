@@ -10,6 +10,7 @@ import {ViewCalendarComponent} from './components/view-calendar/view-calendar.co
 import {ViewScoreComponent} from './components/view-score/view-score.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import {ViewAddgroupComponent} from "./components/view-addgroup/view-addgroup.component";
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'view-assignment', component: ViewAssignmentComponent},
   { path: 'view-calendar', component: ViewCalendarComponent},
   { path : 'view-score', component: ViewScoreComponent},
-  { path: 'view-program', component: ViewProgramComponent}
+  { path: 'view-program', component: ViewProgramComponent},
+  { path: 'view-addgroup', component: ViewAddgroupComponent}
 ];
 
 @NgModule({

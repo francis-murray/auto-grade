@@ -1,0 +1,23 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Add Group</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form">
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="name of group"
+          [(ngModel)]="name"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+      <button mat-stroked-button color="accent" class="btn-block" (click) = "addgroup()">Create</button>
+
+    </form>
+  </mat-card>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/services/auth.service";
 import { UsersService } from "src/app/services/users.service";
+import { UsersResolverService } from "src/app/services/users-resolver.service";
+import { ActivatedRoute, Data } from "@angular/router";
 
 @Component({
   selector: "app-user-info",
@@ -24,21 +26,19 @@ export class UserInfoComponent implements OnInit {
 
   isFetching = false;
 
-  constructor(private authService: AuthService, private usersService: UsersService) {
-    this.ngOnInit;
-  }
+  constructor(
+    private authService: AuthService,
+    private usersService: UsersService,
+    private usersResolverService: UsersResolverService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getUserInfo();
-  }
-
-  getUserInfo() {
     this.isLoading = true;
-    this.usersService.getUserInfo().subscribe(response => {
+    this.route.data.subscribe((data: Data) => {
       this.isLoading = false;
-      this.dataFromServer = response;
-
-      console.log("getUserInfo() dataFromServer: ", this.dataFromServer);
+      console.log("Data :", data["user"]);
+      this.dataFromServer = data["user"];
     });
   }
 

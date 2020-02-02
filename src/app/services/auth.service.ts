@@ -29,9 +29,10 @@ export class AuthService {
     localStorage.setItem("status", resp.status.toString());
     localStorage.setItem("auth_token", resp.auth_token);
     console.log("localstorage after setUser: ", localStorage);
-    this.router.navigate(["/user-info"]).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(["/user-info"]);
+    // this.router.navigate(["/user-info"]).then(() => {
+    //   window.location.reload();
+    // });
   }
 
   // check if token is set

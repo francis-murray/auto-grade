@@ -10,11 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AngularMaterialModule } from "./angular-material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import {
-  MatExpansionModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule
-} from "@angular/material";
+import { MatExpansionModule, MatSnackBarModule, MatProgressSpinnerModule } from "@angular/material";
 
 /* Forms Module */
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -66,7 +62,7 @@ import { JwtModule } from "@auth0/angular-jwt";
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem("access_token");
+          return localStorage.getItem("auth_token");
         },
         whitelistedDomains: ["localhost"],
         blacklistedRoutes: ["localhost/auth/login"]

@@ -8,6 +8,8 @@ import { UsersService } from "src/app/services/users.service";
   styleUrls: ["./user-info.component.css"]
 })
 export class UserInfoComponent implements OnInit {
+  isLoading: boolean = false;
+
   dataFromServer: any = {
     status: 0,
     user_data: {
@@ -22,20 +24,21 @@ export class UserInfoComponent implements OnInit {
 
   isFetching = false;
 
-  constructor(
-    private authService: AuthService,
-    private usersService: UsersService
-  ) {}
+  constructor(private authService: AuthService, private usersService: UsersService) {
+    this.ngOnInit;
+  }
 
   ngOnInit() {
     this.getUserInfo();
   }
 
   getUserInfo() {
-    console.log("getUserInfo()... ");
+    this.isLoading = true;
     this.usersService.getUserInfo().subscribe(response => {
+      this.isLoading = false;
       this.dataFromServer = response;
-      console.log("dataFromServer: ", this.dataFromServer);
+
+      console.log("getUserInfo() dataFromServer: ", this.dataFromServer);
     });
   }
 

@@ -1,9 +1,5 @@
 import { Injectable } from "@angular/core";
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse
-} from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Subject, throwError, Observable } from "rxjs";
 import { User, UserTypeEnum } from "../models/user.model";
 import { tap, catchError, retry } from "rxjs/operators";
@@ -32,13 +28,15 @@ export class AuthService {
   setUser(resp: AuthResponse) {
     localStorage.setItem("status", resp.status.toString());
     localStorage.setItem("auth_token", resp.auth_token);
-    console.log("localstorage afeter setUser: ", localStorage);
-    this.router.navigate(["/user-info"]);
+    console.log("localstorage after setUser: ", localStorage);
+    this.router.navigate(["/user-info"]).then(() => {
+      window.location.reload();
+    });
   }
 
   // check if token is set
   isLoggedIn() {
-    return localStorage.getItem("access_token") != null;
+    return localStorage.getItem("auth_token") != null;
   }
 
   // clear localStorage and redirect to login screen
@@ -58,9 +56,7 @@ export class AuthService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
+      console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message
     return throwError("Something bad happened; please try again later.");

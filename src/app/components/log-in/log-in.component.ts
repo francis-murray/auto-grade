@@ -14,10 +14,7 @@ export class LogInComponent implements OnInit {
   user = {} as User;
   errorMessage = "";
 
-  constructor(
-    private authService: AuthService,
-    private userService: UsersService
-  ) {}
+  constructor(private authService: AuthService, private userService: UsersService) {}
 
   ngOnInit() {
     this.authService.logout();
@@ -31,25 +28,23 @@ export class LogInComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.userService
-      .authenticateUser(this.user.email, this.user.password)
-      .subscribe(
-        response => {
-          console.log("response", response);
-          this.isLoading = false;
-          if (response.status === 0) {
-            this.authService.setUser(response);
-          } else {
-            this.errorMessage = "Invalid password. Please try again.";
-          }
-        },
-        error => {
-          console.error("error", error);
-          this.isLoading = false;
-          if (error.error.status === -2) {
-            this.errorMessage = "This user doesn't exist";
-          }
+    this.userService.authenticateUser(this.user.email, this.user.password).subscribe(
+      response => {
+        console.log("response", response);
+        this.isLoading = false;
+        if (response.status === 0) {
+          this.authService.setUser(response);
+        } else {
+          this.errorMessage = "Invalid password. Please try again.";
         }
-      );
+      },
+      error => {
+        console.error("error", error);
+        this.isLoading = false;
+        if (error.error.status === -2) {
+          this.errorMessage = "This user doesn't exist";
+        }
+      }
+    );
   }
 }

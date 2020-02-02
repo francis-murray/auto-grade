@@ -4,7 +4,7 @@
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
 
-  <span class="nav-tool-items" *ngIf="isLoggedIn">
+  <span class="nav-tool-items" *ngIf="isLoggedInVar">
     <a mat-button routerLink="user-info" routerLinkActive="active">User Info</a>
     <a mat-button routerLink="submit-assignment" routerLinkActive="active">Submit Assignment</a>
     <a mat-button routerLink="view-assignment" routerLinkActive="active">View Assignment</a>
@@ -14,7 +14,7 @@
     <a mat-button mat-raised-button routerLink="" routerLinkActive="active" (click)="logout()">Log out</a>
   </span>
 
-  <span *ngIf="!isLoggedIn">
+  <span *ngIf="!isLoggedInVar">
     <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
     <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
   </span>

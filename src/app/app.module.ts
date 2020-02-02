@@ -35,6 +35,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { ViewAddgroupComponent } from './components/view-addgroup/view-addgroup.component';
+import { ViewAddassignmentComponent } from './components/view-addassignment/view-addassignment.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ViewAddgroupComponent } from './components/view-addgroup/view-addgroup.
     ViewProgramComponent,
     // AuthComponent,
     UserInfoComponent,
-    ViewAddgroupComponent
+    ViewAddgroupComponent,
+    ViewAddassignmentComponent
   ],
   imports: [
     BrowserModule,

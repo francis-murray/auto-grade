@@ -1,0 +1,92 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>create Assignment</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Choose your groupe</mat-label>
+        <!-- <mat-select [(value)]="selected"> -->
+        <mat-select>
+          <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="name of assignement"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="description"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="ios"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+
+      <div>
+        <label for="singleFile">Upload file</label>
+        <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+        <br>
+
+        <mat-file-upload-queue #fileUploadQueue
+                               [fileAlias]="'file'"
+                               [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+
+          <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+        </mat-file-upload-queue>
+
+      </div>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Marking schame for the file size"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Marking schame for the cpu time used"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Marking schame for the memory used"
+          name="name"
+          required
+        />
+      </mat-form-field>
+
+
+      <button mat-stroked-button color="accent" class="btn-block">creation</button>
+
+    </form>
+  </mat-card>
+</div>

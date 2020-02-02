@@ -11,6 +11,7 @@ import {ViewScoreComponent} from './components/view-score/view-score.component';
 import { ViewProgramComponent } from './components/view-program/view-program.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import {ViewAddgroupComponent} from "./components/view-addgroup/view-addgroup.component";
+import {ViewAddassignmentComponent} from "./components/view-addassignment/view-addassignment.component";
 
 
 
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'view-calendar', component: ViewCalendarComponent},
   { path : 'view-score', component: ViewScoreComponent},
   { path: 'view-program', component: ViewProgramComponent},
-  { path: 'view-addgroup', component: ViewAddgroupComponent}
+  { path: 'view-addgroup', component: ViewAddgroupComponent},
+  { path: 'view-addassignment', component: ViewAddassignmentComponent}
 ];
 
 @NgModule({

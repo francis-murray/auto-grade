@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Assignment} from "../models/assignment.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class GroupsService {
+export class AssignementsService {
 
   apiBasePath = "http://127.0.0.1:5000";
 
@@ -15,22 +16,18 @@ export class GroupsService {
     })
   };
 
+
   constructor(private http: HttpClient) { }
 
-
-  createGroup(name : string){
+  CreateAssignment(assignment : Assignment){
     return this.http.post(
-      this.apiBasePath + "/groups/create",
+      this.apiBasePath + "/assignments/evaluator/create",
       {
-        "name": name
+        "name": assignment.name,
+        "description" : assignment.description,
+        "ios" : assignment.ios,
+        "assignmentFile" : assignment.filename
       },
-      this.httpOptions
-    );
-  }
-
-  getallgroupEvaluator(){
-    return this.http.get(
-      this.apiBasePath + "/groups/get/evaluator/all",
       this.httpOptions
     );
   }

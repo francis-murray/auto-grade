@@ -36,6 +36,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ViewAddgroupComponent } from './components/view-addgroup/view-addgroup.component';
 import { ViewAddassignmentComponent } from './components/view-addassignment/view-addassignment.component';
+import { ViewAddcandidateComponent } from './components/view-addcandidate/view-addcandidate.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ViewAddassignmentComponent } from './components/view-addassignment/view
     // AuthComponent,
     UserInfoComponent,
     ViewAddgroupComponent,
-    ViewAddassignmentComponent
+    ViewAddassignmentComponent,
+    ViewAddcandidateComponent
   ],
   imports: [
     BrowserModule,

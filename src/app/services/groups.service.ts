@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from "rxjs";
+import {AuthResponse} from "./auth.service";
 
 //import { Observable } from "rxjs";
 
@@ -30,10 +31,22 @@ export class GroupsService {
     );
   }
 
-  getallgroupEvaluator(){
-    return this.http.get(
+  getallgroupEvaluator(): Observable<AuthResponse> {
+    return this.http.get<AuthResponse>(
       this.apiBasePath + "/groups/get/evaluator/all",
       this.httpOptions
     );
   }
+
+  addstudenttogroup(name : string, email : string){
+    return this.http.put<AuthResponse>(
+      this.apiBasePath + "/groups/get/evaluator/all",{
+        "name": name,
+        "user_mail" : email
+      },
+    );
+
+
+  }
+
 }

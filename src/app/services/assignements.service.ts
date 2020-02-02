@@ -22,8 +22,8 @@ export class AssignementsService {
     console.log(file);
 
     const fd = new FormData();
-    fd.append("name", "assignname");
-    fd.append("description", "desc");
+    fd.append("name", "assignname3");
+    fd.append("description", "desc3");
     fd.append("ios", JSON.stringify(["ios : ios"]));
     fd.append("assignmentFile", file, file.name)
     fd.append("marking_scheme_file_size", "30");

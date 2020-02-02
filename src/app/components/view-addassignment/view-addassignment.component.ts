@@ -26,13 +26,12 @@ export class ViewAddassignmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log("getUserInfo()... ");
-    // this.groupsService.getallgroupEvaluator().subscribe(response => {
-    //   console.log("dataFromServer: ", response);
-    //   if(response.status === 0){
-    //       this.Groupe = response.groups;
-    //   }
-    // });
+     this.groupsService.getallgroupEvaluator().subscribe(response => {
+       console.log("dataFromServer: ", response);
+       if(response.status === 0){
+           this.Groupe = response.groups;
+       }
+     });
   }
 
   onFileselected(event) {

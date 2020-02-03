@@ -10,9 +10,12 @@ import { ViewScoreComponent } from "./components/view-score/view-score.component
 import { ViewProgramComponent } from "./components/view-program/view-program.component";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { UsersResolverService } from "./services/users-resolver.service";
+import { ViewAddgroupComponent } from "./components/view-addgroup/view-addgroup.component";
+import { ViewAddassignmentComponent } from "./components/view-addassignment/view-addassignment.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
+
   { path: "login", component: LogInComponent },
   { path: "register", component: RegisterComponent },
   { path: "user-info", component: UserInfoComponent, resolve: { user: UsersResolverService } },
@@ -20,7 +23,9 @@ const routes: Routes = [
   { path: "view-assignment", component: ViewAssignmentComponent },
   { path: "view-calendar", component: ViewCalendarComponent },
   { path: "view-score", component: ViewScoreComponent },
-  { path: "view-program", component: ViewProgramComponent }
+  { path: "view-program", component: ViewProgramComponent },
+  { path: "view-addgroup", component: ViewAddgroupComponent },
+  { path: "view-addassignment", component: ViewAddassignmentComponent }
 ];
 
 @NgModule({

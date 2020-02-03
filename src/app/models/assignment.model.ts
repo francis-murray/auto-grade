@@ -6,16 +6,9 @@ export interface Assignment {
   description: string;
   deadline: string;
   is_valid: number;
-  ios: Array<Ios>;
-  stats: Array<Stat>;
-}
+  ios: Array<string>;
+  marking_scheme_file_size : string;
+  marking_scheme_cpu_time : string;
+  marking_scheme_memory_used : string;
 
-export interface Stat {
-  cpu_time: number;
-  file_size: number;
-}
-
-export interface Ios {
-  input: string;
-  output: string;
 }

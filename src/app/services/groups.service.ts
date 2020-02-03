@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Group } from '../models/group.model';
 
 //import { Observable } from "rxjs";
+
+interface ResponseBody {
+  status: number,
+  groups: Array<Group>
+}
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +36,8 @@ export class GroupsService {
     );
   }
 
-  getallgroupEvaluator(){
-    return this.http.get(
+  getallgroupEvaluator(): Observable<ResponseBody>{
+    return this.http.get<ResponseBody>(
       this.apiBasePath + "/groups/get/evaluator/all",
       this.httpOptions
     );

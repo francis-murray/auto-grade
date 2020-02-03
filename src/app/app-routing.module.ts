@@ -9,7 +9,6 @@ import { ViewCalendarComponent } from "./components/view-calendar/view-calendar.
 import { ViewScoreComponent } from "./components/view-score/view-score.component";
 import { ViewProgramComponent } from "./components/view-program/view-program.component";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
-import { UsersResolverService } from "./services/users-resolver.service";
 import { ViewAddgroupComponent } from "./components/view-addgroup/view-addgroup.component";
 import { ViewAddassignmentComponent } from "./components/view-addassignment/view-addassignment.component";
 import {ViewPaymentComponent} from "./components/view-payment/view-payment.component";
@@ -20,7 +19,7 @@ const routes: Routes = [
 
   { path: "login", component: LogInComponent },
   { path: "register", component: RegisterComponent },
-  { path: "user-info", component: UserInfoComponent, resolve: { user: UsersResolverService } },
+  { path: "user-info", component: UserInfoComponent },
   { path: "submit-assignment", component: SubmitAssignmentComponent },
   { path: "view-assignment", component: ViewAssignmentComponent },
   { path: "view-calendar", component: ViewCalendarComponent },

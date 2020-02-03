@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
-import { Subject, throwError, Observable } from "rxjs";
-import { User, UserTypeEnum } from "../models/user.model";
-import { tap, catchError, retry } from "rxjs/operators";
+import { throwError } from "rxjs";
 import { Router } from "@angular/router";
 
 export interface AuthResponse {
@@ -28,11 +26,9 @@ export class AuthService {
   setUser(resp: AuthResponse) {
     localStorage.setItem("status", resp.status.toString());
     localStorage.setItem("auth_token", resp.auth_token);
-    console.log("localstorage after setUser: ", localStorage);
-    this.router.navigate(["/user-info"]);
-    // this.router.navigate(["/user-info"]).then(() => {
-    //   window.location.reload();
-    // });
+    this.router.navigate(["/user-info"]).then(() => {
+      window.location.reload();
+    });
   }
 
   // check if token is set

@@ -11,6 +11,8 @@ import { ViewProgramComponent } from "./components/view-program/view-program.com
 import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { ViewAddgroupComponent } from "./components/view-addgroup/view-addgroup.component";
 import { ViewAddassignmentComponent } from "./components/view-addassignment/view-addassignment.component";
+import {ViewPaymentComponent} from "./components/view-payment/view-payment.component";
+
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: "view-score", component: ViewScoreComponent },
   { path: "view-program", component: ViewProgramComponent },
   { path: "view-addgroup", component: ViewAddgroupComponent },
-  { path: "view-addassignment", component: ViewAddassignmentComponent }
+  { path: "view-addassignment", component: ViewAddassignmentComponent },
+  { path: "view-payment", component: ViewPaymentComponent}
 ];
 
 @NgModule({

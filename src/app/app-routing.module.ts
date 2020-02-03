@@ -11,6 +11,8 @@ import { ViewProgramComponent } from "./components/view-program/view-program.com
 import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { ViewAddgroupComponent } from "./components/view-addgroup/view-addgroup.component";
 import { ViewAddassignmentComponent } from "./components/view-addassignment/view-addassignment.component";
+import {ViewAddCandidateTogroupComponent} from "./components/view-add-candidate-togroup/view-add-candidate-togroup.component";
+
 import { ViewPaymentComponent } from "./components/view-payment/view-payment.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: "view-program", component: ViewProgramComponent },
   { path: "view-addgroup", component: ViewAddgroupComponent },
   { path: "view-addassignment", component: ViewAddassignmentComponent },
+  { path: "view-payment", component: ViewPaymentComponent},
+  { path: "view-add-candidate", component: ViewAddCandidateTogroupComponent}
   { path: "view-payment", component: ViewPaymentComponent }
 ];
 

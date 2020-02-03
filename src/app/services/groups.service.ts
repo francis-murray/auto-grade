@@ -50,4 +50,13 @@ export class GroupsService {
       "deadline": deadline
     },this.httpOptions)
   }
+
+  putCandidatetoGroup(name : string, user_mail : string) : Observable<any>{
+    return this.http.put(this.apiBasePath + "/groups/add/candidate", {
+      "name" : name,
+      "user_mail" : user_mail
+    },this.httpOptions)
+  }
+
+
 }

@@ -133,4 +133,12 @@ export class UsersService {
       this.httpOptions
     );
   }
+
+  /** Valide transaction Paypal **/
+/*
+  validetrans(order_id : string) : Observable<any>{
+    this.http.put(this.apiBasePath + "/users/update",{
+
+    })
+  }*/
 }

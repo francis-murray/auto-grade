@@ -76,7 +76,9 @@ export class ViewPaymentComponent implements OnInit {
         //this.showError = true;
       },
       onClick: (data, actions) => {
+        console.log(this.montant)
         console.log('onClick', data, actions);
+
         //this.resetStatus();
       }
     };

@@ -31,6 +31,7 @@ export class UserInfoComponent implements OnInit {
     this.usersService.getUserInfo().subscribe(data => {
       this.isLoading = false;
       this.dataFromServer = data;
+      console.log(data)
     }),
       error => {
         this.isLoading = false;

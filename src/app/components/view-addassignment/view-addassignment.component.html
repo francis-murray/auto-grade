@@ -9,7 +9,7 @@
       <mat-form-field class="example-full-width">
         <mat-label>Choose your groupe</mat-label>
         <mat-select [(value)]="selected">
-          <mat-option [value]="groupes.id" *ngFor="let groupes of group">{{groupes.name}}
+          <mat-option [value]="groupes.name" *ngFor="let groupes of group">{{groupes.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -41,6 +41,13 @@
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Marking schame for the memory used" [(ngModel)]="assignment.marking_scheme_memory_used" name="memory" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Input & change events"
+               (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
 

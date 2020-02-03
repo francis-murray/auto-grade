@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Assignment} from "../models/assignment.model";
+import {Group} from "../models/group.model";
+import {Observable} from "rxjs";
+
+interface ReturnType{
+  status : number,
+  assign_id : string
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class AssignementsService {
+
+
 
   apiBasePath = "http://127.0.0.1:5000";
 
@@ -18,7 +31,7 @@ export class AssignementsService {
   // test push
   constructor(private http: HttpClient) { }
 
-  CreateAssignment(assignment : Assignment, file : File){
+  CreateAssignment(assignment : Assignment, file : File): Observable<ReturnType>{
     console.log(file);
 
     const fd = new FormData();
@@ -31,7 +44,7 @@ export class AssignementsService {
     fd.append("marking_scheme_memory_used", assignment.marking_scheme_memory_used);
     console.log(fd);
 
-    return this.http.post(
+    return this.http.post<ReturnType>(
       this.apiBasePath + "/assignments/evaluator/create",
       fd,
       this.httpOptions

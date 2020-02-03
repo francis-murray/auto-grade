@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ViewAddassignmentComponent } from './view-addassignment.component';
+import { ViewAddassignmentComponent } from "./view-addassignment.component";
 
-describe('ViewAddassignmentComponent', () => {
+describe("ViewAddassignmentComponent", () => {
   let component: ViewAddassignmentComponent;
   let fixture: ComponentFixture<ViewAddassignmentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewAddassignmentComponent ]
-    })
-    .compileComponents();
+      declarations: [ViewAddassignmentComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ViewAddassignmentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

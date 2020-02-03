@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Group } from '../models/group.model';
+import { Group } from "../models/group.model";
 
 //import { Observable } from "rxjs";
 
 interface ResponseBody {
-  status: number,
-  groups: Array<Group>
+  status: number;
+  groups: Array<Group>;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class GroupsService {
-
   apiBasePath = "http://127.0.0.1:5000";
 
   httpOptions = {
@@ -24,22 +23,19 @@ export class GroupsService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  createGroup(name : string){
+  createGroup(name: string) {
     return this.http.post(
       this.apiBasePath + "/groups/create",
       {
-        "name": name
+        name: name
       },
       this.httpOptions
     );
   }
 
-  getallgroupEvaluator(): Observable<ResponseBody>{
-    return this.http.get<ResponseBody>(
-      this.apiBasePath + "/groups/get/evaluator/all",
-      this.httpOptions
-    );
+  getallgroupEvaluator(): Observable<any> {
+    return this.http.get(this.apiBasePath + "/groups/get/evaluator/all", this.httpOptions);
   }
 }

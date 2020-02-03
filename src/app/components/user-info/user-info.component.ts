@@ -8,7 +8,7 @@ import { Evaluator } from "@angular/compiler-cli/src/metadata/evaluator";
   styleUrls: ["./user-info.component.css"]
 })
 export class UserInfoComponent implements OnInit {
-  isLoading: boolean = false;
+  isLoading = false;
   createdDate: Date;
   isFetching = false;
 
@@ -34,9 +34,11 @@ export class UserInfoComponent implements OnInit {
     this.usersService.getUserInfo().subscribe(data => {
       this.isLoading = false;
       this.dataFromServer = data;
+
       this.createdDate = new Date(this.dataFromServer.user_data.created_timestamp * 1000);
 
       console.log("dataFromServer", this.dataFromServer);
+
     }),
       error => {
         this.isLoading = false;

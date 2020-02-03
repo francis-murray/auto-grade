@@ -14,7 +14,7 @@ export class ViewPaymentComponent implements OnInit {
   public Formule1 : boolean;
   public Formule2 : boolean;
   public Formule3 : boolean;
-  montant=0;
+  montant=0.0;
   ngOnInit() {
     this.initConfig1();
 
@@ -22,7 +22,7 @@ export class ViewPaymentComponent implements OnInit {
   private initConfig1(): void {
     this.payPalConfig1 = {
       currency: 'EUR',
-      clientId: 'AWAJ4Uu3HNpxENMZoLBQTIWKH_3RtSriR-UK1_Nb1CavMCYqT0kYB8SeyNtigoRNepDxnvMNnvnU3Yvz',
+      clientId: 'AcRinZAP9nZ7poYuDxVy0-fjpIXybcnhwZveK4TQza7sPpS30AeHZn4XSXTMHzj494drFZmGQcVOnptL',
       createOrderOnClient: (data) => < ICreateOrderRequest > {
         intent: 'CAPTURE',
         purchase_units: [{
@@ -71,7 +71,8 @@ export class ViewPaymentComponent implements OnInit {
 
       },
       onError: err => {
-        console.log('OnError', err);
+        console.log('OnError');
+        console.log(this.payPalConfig1)
         //this.showError = true;
       },
       onClick: (data, actions) => {

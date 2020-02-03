@@ -10,6 +10,10 @@ interface ResponseBody {
   groups: Array<Group>;
 }
 
+interface Responsestatus {
+  status: number;
+}
+
 @Injectable({
   providedIn: "root"
 })
@@ -37,5 +41,13 @@ export class GroupsService {
 
   getallgroupEvaluator(): Observable<any> {
     return this.http.get(this.apiBasePath + "/groups/get/evaluator/all", this.httpOptions);
+  }
+
+  putAssignmentToGroup(groupename : string, assign_id : string, deadline : number): Observable<any>{
+    return this.http.put(this.apiBasePath + "/groups/add/assignment" , {
+      "group_name": groupename,
+      "assignID": assign_id,
+      "deadline": deadline
+    },this.httpOptions)
   }
 }

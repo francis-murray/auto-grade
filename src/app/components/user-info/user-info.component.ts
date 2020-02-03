@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "src/app/services/auth.service";
 import { UsersService } from "src/app/services/users.service";
+import { Evaluator } from "@angular/compiler-cli/src/metadata/evaluator";
 
 @Component({
   selector: "app-user-info",
@@ -8,7 +8,9 @@ import { UsersService } from "src/app/services/users.service";
   styleUrls: ["./user-info.component.css"]
 })
 export class UserInfoComponent implements OnInit {
-  isLoading: boolean = false;
+  isLoading = false;
+  createdDate: Date;
+  isFetching = false;
 
   dataFromServer: any = {
     status: 0,
@@ -18,20 +20,25 @@ export class UserInfoComponent implements OnInit {
       email: "",
       type: "",
       created_timestamp: 0,
-      groups: []
+      organisation: "",
+      corrected_programs_left: 0,
+      groups: [],
+      assignmentsCreated: []
     }
   };
 
-  isFetching = false;
-
-  constructor(private authService: AuthService, private usersService: UsersService) {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit() {
     this.isLoading = true;
     this.usersService.getUserInfo().subscribe(data => {
       this.isLoading = false;
       this.dataFromServer = data;
-      console.log(data)
+
+      this.createdDate = new Date(this.dataFromServer.user_data.created_timestamp * 1000);
+
+      console.log("dataFromServer", this.dataFromServer);
+
     }),
       error => {
         this.isLoading = false;

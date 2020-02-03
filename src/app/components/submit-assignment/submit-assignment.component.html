@@ -8,9 +8,8 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Choose your groupe</mat-label>
-            <!-- <mat-select [(value)]="selected"> -->
-            <mat-select>
-              <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
+            <mat-select (selectionChange)="changegroup()" [(value)]="groupselected">>
+              <mat-option [value]="groups.id" *ngFor="let groups of group">{{groups.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -18,27 +17,17 @@
           <mat-form-field class="example-full-width">
               <mat-label>Choose your exercise</mat-label>
               <!-- <mat-select [(value)]="selected"> -->
-              <mat-select>
-                      <mat-option [value]="Exercices" *ngFor="let Exercices of Exercices">{{Exercices}}
+              <mat-select [(value)]="assignmentselected" (selectionChange)="changeexercice()">
+                      <mat-option [value]="exercice.id" *ngFor="let exercice of exercices">{{exercice.name}}
                 </mat-option>
               </mat-select>
           </mat-form-field>
 
-            <div>
-                <label for="singleFile">Upload file</label>
-                <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
-                <br>
+        <div>
+          <input type="file" (change)="onFileselected($event)">
+        </div>
 
-                <mat-file-upload-queue #fileUploadQueue
-                    [fileAlias]="'file'"
-                    [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
-
-                    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-                </mat-file-upload-queue>
-
-            </div>
-
-        <button mat-stroked-button color="accent" class="btn-block">Send</button>
+        <button mat-stroked-button color="accent" class="btn-block" (click)="soumission()">Send</button>
 
       </form>
     </mat-card>

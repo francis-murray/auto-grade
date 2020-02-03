@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: "view-addgroup", component: ViewAddgroupComponent },
   { path: "view-addassignment", component: ViewAddassignmentComponent },
   { path: "view-payment", component: ViewPaymentComponent},
-  { path: "view-add-candidate", component: ViewAddCandidateTogroupComponent}
+  { path: "view-add-candidate", component: ViewAddCandidateTogroupComponent},
   { path: "view-payment", component: ViewPaymentComponent }
 ];
 

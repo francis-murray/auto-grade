@@ -18,12 +18,33 @@
         <input matInput placeholder="Email" [(ngModel)]='dataFromServer.user_data.email'>
       </mat-form-field>
 
-    </mat-card-content>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Type" [(ngModel)]='dataFromServer.user_data.type'>
+      </mat-form-field>
 
-    <p *ngIf="isFetching">Loading... </p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Created Timestamp" [(ngModel)]='createdDate'>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Corrected Programs Left" [(ngModel)]='dataFromServer.user_data.corrected_programs_left'>
+      </mat-form-field>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Groups
+          </mat-panel-title>
+          <mat-panel-description>
+            Groups in charge
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p *ngFor="let group of dataFromServer.user_data.groups">{{group}}</p>
+      </mat-expansion-panel>
+
+    </mat-card-content>
   </mat-card>
   <div *ngIf="isLoading" class="loading-indicator">
     <mat-spinner></mat-spinner>
   </div>
-
 </div>

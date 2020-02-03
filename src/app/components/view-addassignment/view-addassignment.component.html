@@ -1,13 +1,13 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header>
-      <mat-card-title>create Assignment</mat-card-title>
+      <mat-card-title>Create Assignment</mat-card-title>
     </mat-card-header>
 
     <form class="example-form">
 
       <mat-form-field class="example-full-width">
-        <mat-label>Choose your groupe</mat-label>
+        <mat-label>Choose your Group</mat-label>
         <mat-select [(value)]="selected">
           <mat-option [value]="groupes.name" *ngFor="let groupes of group">{{groupes.name}}
           </mat-option>
@@ -15,15 +15,15 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="name of assignement" [(ngModel)]="assignment.name" name="name" required />
+        <input matInput placeholder="Name of Assignement" [(ngModel)]="assignment.name" name="name" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="description" [(ngModel)]="assignment.description" name="description" required />
+        <input matInput placeholder="Description" [(ngModel)]="assignment.description" name="description" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="ios" [(ngModel)]="ios" name="ios" required />
+        <input matInput placeholder="Input(s) : Output (ex: 2 3 : 6)" [(ngModel)]="ios" name="ios" required />
       </mat-form-field>
 
 
@@ -32,26 +32,25 @@
       </div>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Marking schame for the file size" [(ngModel)]="assignment.marking_scheme_file_size" name="size" required />
+        <input matInput placeholder="Grading scheme for the file size" [(ngModel)]="assignment.marking_scheme_file_size" name="size" type="number" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Marking schame for the cpu time used" [(ngModel)]="assignment.marking_scheme_cpu_time" name="cpu" required />
+        <input matInput placeholder="Grading scheme for the CPU time used" [(ngModel)]="assignment.marking_scheme_cpu_time" name="cpu" type="number" required />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Marking schame for the memory used" [(ngModel)]="assignment.marking_scheme_memory_used" name="memory" required />
+        <input matInput placeholder="Grading scheme for the memory used" [(ngModel)]="assignment.marking_scheme_memory_used" name="memory" type="number" required />
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Input & change events"
-               (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+        <input matInput [matDatepicker]="picker" placeholder="Deadline" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
 
-      <button mat-stroked-button color="accent" class="btn-block" (click)="addAssignment()">creation</button>
+      <button mat-stroked-button color="accent" class="btn-block" (click)="addAssignment()">Submit</button>
 
     </form>
   </mat-card>

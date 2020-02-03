@@ -10,7 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AngularMaterialModule } from "./angular-material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { MatExpansionModule, MatSnackBarModule, MatProgressSpinnerModule } from "@angular/material";
+import {MatExpansionModule, MatSnackBarModule, MatProgressSpinnerModule, MatCheckboxModule} from "@angular/material";
 
 /* Forms Module */
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -33,6 +33,8 @@ import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { JwtModule } from "@auth0/angular-jwt";
 import { ViewAddgroupComponent } from "./components/view-addgroup/view-addgroup.component";
 import { ViewAddassignmentComponent } from "./components/view-addassignment/view-addassignment.component";
+import { ViewPaymentComponent } from './components/view-payment/view-payment.component';
+import {NgxPayPalModule} from "ngx-paypal";
 
 @NgModule({
   declarations: [
@@ -48,9 +50,11 @@ import { ViewAddassignmentComponent } from "./components/view-addassignment/view
     // AuthComponent,
     UserInfoComponent,
     ViewAddgroupComponent,
-    ViewAddassignmentComponent
+    ViewAddassignmentComponent,
+    ViewPaymentComponent
   ],
   imports: [
+    NgxPayPalModule,
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -72,7 +76,8 @@ import { ViewAddassignmentComponent } from "./components/view-addassignment/view
         whitelistedDomains: ["localhost"],
         blacklistedRoutes: ["localhost/auth/login"]
       }
-    })
+    }),
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

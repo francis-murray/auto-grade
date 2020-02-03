@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 200px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.container {
+  display: flex; /* or inline-flex */
+  margin-bottom: 100px;
+}
+.item {
+  flex-grow: 0; /* default 0 */
+  margin-left: 13%;
+  margin-top: 50px;
+}
+
+.paypal{
+text-align: center;
+}

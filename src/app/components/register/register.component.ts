@@ -16,11 +16,7 @@ export class RegisterComponent implements OnInit {
 
   isFetching = false;
 
-  constructor(
-    private usersService: UsersService,
-    private snackBar: MatSnackBar,
-    private router: Router
-  ) {}
+  constructor(private usersService: UsersService, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit() {}
 
@@ -38,13 +34,9 @@ export class RegisterComponent implements OnInit {
         responseData => {
           this.isFetching = false;
           console.log(responseData);
-          this.snackBar.open(
-            "Successful Registration! Please sign in",
-            "Close",
-            {
-              duration: 2000
-            }
-          );
+          this.snackBar.open("Successful Registration! Please sign in", "Close", {
+            duration: 2000
+          });
           this.router.navigate(["/login"]);
         },
         error => {

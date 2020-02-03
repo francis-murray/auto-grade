@@ -43,6 +43,10 @@ export class GroupsService {
     return this.http.get(this.apiBasePath + "/groups/get/evaluator/all", this.httpOptions);
   }
 
+  getallgroupCandidate(): Observable<any> {
+    return this.http.get(this.apiBasePath + "/groups/get/candidate/all", this.httpOptions);
+  }
+
   putAssignmentToGroup(groupename : string, assign_id : string, deadline : number): Observable<any>{
     return this.http.put(this.apiBasePath + "/groups/add/assignment" , {
       "group_name": groupename,
@@ -51,11 +55,16 @@ export class GroupsService {
     },this.httpOptions)
   }
 
-  putCandidatetoGroup(name : string, user_mail : string) : Observable<any>{
+  putcandidate(name : string, user_mail : string) : Observable<any>{
     return this.http.put(this.apiBasePath + "/groups/add/candidate", {
       "name" : name,
       "user_mail" : user_mail
     },this.httpOptions)
+  }
+
+  getassignmentscandidateOne(id : string) : Observable<any>{
+    console.log();
+    return this.http.get(this.apiBasePath + "/groups/get/candidate/one/" + id ,this.httpOptions );
   }
 
 

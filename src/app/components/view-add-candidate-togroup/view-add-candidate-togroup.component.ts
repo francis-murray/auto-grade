@@ -31,13 +31,20 @@ export class ViewAddCandidateTogroupComponent implements OnInit {
   Addcandidate(){
     console.log(this.selected);
     console.log(this.email);
-    this.groupsService.putCandidatetoGroup(this.selected, this.email).subscribe(response=>{
+   /* this.groupsService.putCandidatetoGroup(this.selected, this.email).subscribe(response=>{
       if(response.status === 0) {
         console.log("success");
       }else{
         console.log("error");
       }
-    })
+    });*/
+   this.groupsService.putcandidate(this.selected,this.email).subscribe(response=>{
+     if(response.status === 0) {
+       console.log("success");
+     }else{
+       console.log("error");
+     }
+   });
 
   }
 

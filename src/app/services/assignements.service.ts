@@ -50,4 +50,19 @@ export class AssignementsService {
       this.httpOptions
     );
   }
+
+  SoumissionAssignment(assignId : string , groupId : string, file : File) : Observable<any>{
+
+    console.log("Soumossion ... ");
+    const fd = new FormData();
+    fd.append("assignID", assignId);
+    fd.append("groupID", groupId);
+    fd.append("assignmentFile", file, file.name);
+
+    return this.http.post(
+      this.apiBasePath + "/assignments/candidate/submit",
+      fd,
+      this.httpOptions
+    );
+  }
 }

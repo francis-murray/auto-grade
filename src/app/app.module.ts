@@ -35,6 +35,7 @@ import { ViewAddgroupComponent } from "./components/view-addgroup/view-addgroup.
 import { ViewAddassignmentComponent } from "./components/view-addassignment/view-addassignment.component";
 import { ViewPaymentComponent } from './components/view-payment/view-payment.component';
 import {NgxPayPalModule} from "ngx-paypal";
+import { ViewAddCandidateTogroupComponent } from './components/view-add-candidate-togroup/view-add-candidate-togroup.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {NgxPayPalModule} from "ngx-paypal";
     UserInfoComponent,
     ViewAddgroupComponent,
     ViewAddassignmentComponent,
-    ViewPaymentComponent
+    ViewPaymentComponent,
+    ViewAddCandidateTogroupComponent
   ],
   imports: [
     NgxPayPalModule,

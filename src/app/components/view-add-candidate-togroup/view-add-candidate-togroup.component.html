@@ -1,0 +1,30 @@
+
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Add candidate to Group</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <mat-label>Choose your groupe</mat-label>
+        <!-- <mat-select -->
+        <mat-select  [(value)]="selected">>
+          <mat-option [value]="groups.name" *ngFor="let groups of group">{{groups.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required />
+      </mat-form-field>
+    </mat-card-content>
+
+    <button mat-stroked-button color="accent" class="btn-block" (click)="Addcandidate()">Submit</button>
+
+  </mat-card>
+</div>
+
+
+

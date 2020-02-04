@@ -1,24 +1,34 @@
-<div class="login-wrapper" fxLayoutAlign="center center">
-  <mat-card class = "box">
-    <div class="title">
-      <mat-card-title>Nom de l'assignment</mat-card-title>
-      <mat-card-subtitle>DeadLine XX/XX/XX</mat-card-subtitle>
-    </div>
-    <mat-card-content>
-      <div style="margin-left: 30px">
-        <mat-progress-spinner
-
-          class="Spinner"
-          [value]="90">
-        </mat-progress-spinner>
-        <div style="position:relative; top: -58px; left: 40px;"> 90 </div>
-      </div>
-    </mat-card-content>
-    <mat-card-footer>
-      <p>correcteur Mr XXXXXXXXX</p>
-    </mat-card-footer>
-  </mat-card>
+<div>
+  <div *ngFor="let groupes of groupe" class = "CardGroup">
+      <mat-card (click)="selectedcard($event)" [id]="groupes.id">{{groupes.name}}
+        <div class = container>
+          <div *ngIf="groupes.id == groupeselect">
+            <mat-card class = "CardAssignment"*ngFor="let exos of Exercice">
+              <div class="title">
+                <mat-card-title>{{exos.name}}</mat-card-title>
+                <mat-card-subtitle>{{exos.deadline}}</mat-card-subtitle>
+              </div>
+              <mat-card-content>
+                <div class = "spinner">
+                  <mat-progress-spinner
+                    class="Spinner"
+                    [value]="exos.submission.grade">
+                  </mat-progress-spinner>
+                  <div style="position:relative; top: -58px; left: 43px;"> {{exos.submission.grade}} </div>
+                </div>
+              </mat-card-content>
+              <mat-card-footer>
+                <p>cpu time : {{exos.submission.stats.cpu_time}}</p>
+                <p>file size : {{exos.submission.stats.file_size}}</p>
+                <p>memory : {{exos.submission.stats.memory_used}}</p>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+  </div>
 </div>
+
 
 
 

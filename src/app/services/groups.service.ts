@@ -71,5 +71,4 @@ export class GroupsService {
     console.log();
     return this.http.get(GlobalVariables.API_ENDPOINT + "/groups/get/candidate/one/" + id, this.httpOptions);
   }
-
 }

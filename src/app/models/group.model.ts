@@ -1,5 +1,5 @@
-import { Assignment } from './assignment.model';
-import { Candidate } from './user.model';
+import { Assignment } from "./assignment.model";
+import { Candidate } from "./user.model";
 
 export interface Group {
   id_eval: string;

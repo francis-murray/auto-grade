@@ -1,39 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import {GroupsService} from "../../services/groups.service";
-import {AuthService} from "../../services/auth.service";
-import {UsersService} from "../../services/users.service";
+import { Component, OnInit } from "@angular/core";
+import { GroupsService } from "../../services/groups.service";
+import { MatSnackBar } from "@angular/material";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-view-addgroup',
-  templateUrl: './view-addgroup.component.html',
-  styleUrls: ['./view-addgroup.component.css']
+  selector: "app-view-addgroup",
+  templateUrl: "./view-addgroup.component.html",
+  styleUrls: ["./view-addgroup.component.css"]
 })
 export class ViewAddgroupComponent implements OnInit {
+  name: string = "";
+  isFetching = false;
 
-  name : string = "";
+  constructor(private groupsService: GroupsService, private snackBar: MatSnackBar, private router: Router) {}
 
-  constructor(
-    private  groupsService: GroupsService
-  ) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-
-  addgroup(){
+  addgroup() {
     console.log(this.name);
-      this.groupsService.createGroup(this.name).subscribe(
-        response => {
-          if (response === 0) {
-            console.log("ajout reussis");
-          }
-        },
-        error => {
-          console.error(error);
-        }
-      );
-
-
+    this.groupsService.createGroup(this.name).subscribe(
+      response => {
+        this.isFetching = false;
+        this.snackBar.open(this.name + " successfully created!", "Close", {
+          duration: 2000
+        });
+        this.router.navigate(["/user-info"]);
+      },
+      error => {
+        this.isFetching = false;
+        this.snackBar.open(error.error.error, "Close", {
+          duration: 2000
+        });
+        console.log(error);
+      }
+    );
   }
-
 }

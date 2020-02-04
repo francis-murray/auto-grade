@@ -2,13 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { AuthResponse } from "./auth.service";
+import { GlobalVariables } from "../globals/globals";
 
 @Injectable({
   providedIn: "root"
 })
 export class UsersService {
-  apiBasePath = "http://127.0.0.1:5000";
-
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
@@ -25,7 +24,7 @@ export class UsersService {
    * @param password user's password
    */
   authenticateUser(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(this.apiBasePath + "/users/authenticate", {
+    return this.http.post<AuthResponse>(GlobalVariables.API_ENDPOINT + "/users/authenticate", {
       email: email,
       password: password
     });
@@ -38,7 +37,7 @@ export class UsersService {
    */
   addCandidate(mailCandidate: string, groupName: string) {
     return this.http.post(
-      this.apiBasePath + "/users/evaluator/add/candidate",
+      GlobalVariables.API_ENDPOINT + "/users/evaluator/add/candidate",
       {
         mail_candidate: mailCandidate,
         group_name: groupName
@@ -51,7 +50,10 @@ export class UsersService {
    * This route allows you to confirm an evaluator account
    */
   confirmEvaluator() {
-    return this.http.put(this.apiBasePath + "/users/evaluator/confirmation/" + localStorage.getItem("auth_token"), {});
+    return this.http.put(
+      GlobalVariables.API_ENDPOINT + "/users/evaluator/confirmation/" + localStorage.getItem("auth_token"),
+      {}
+    );
   }
 
   /**
@@ -63,7 +65,7 @@ export class UsersService {
    * @param organisation of evaluator
    */
   registerEvaluator(firstName: string, lastName: string, email: string, password: string, organisation: string) {
-    return this.http.post(this.apiBasePath + "/users/evaluator/register", {
+    return this.http.post(GlobalVariables.API_ENDPOINT + "/users/evaluator/register", {
       firstname: firstName,
       lastname: lastName,
       email: email,
@@ -81,7 +83,7 @@ export class UsersService {
    * @param organisation of candidate
    */
   registerCandidate(firstName: string, lastName: string, email: string, password: string, organisation: string) {
-    return this.http.post(this.apiBasePath + "/users/candidate/register", {
+    return this.http.post(GlobalVariables.API_ENDPOINT + "/users/candidate/register", {
       firstname: firstName,
       lastname: lastName,
       email: email,
@@ -95,7 +97,7 @@ export class UsersService {
    * Requires an authentication token.
    */
   getUserInfo() {
-    return this.http.get(this.apiBasePath + "/users/get/info", this.httpOptions);
+    return this.http.get(GlobalVariables.API_ENDPOINT + "/users/get/info", this.httpOptions);
   }
 
   /**
@@ -106,7 +108,11 @@ export class UsersService {
    * @param organisation User's orgnanisation
    */
   updateUser(firstname: string, lastname: string, organisation: string) {
-    return this.http.put(this.apiBasePath + "/users/update", { firstname, lastname, organisation }, this.httpOptions);
+    return this.http.put(
+      GlobalVariables.API_ENDPOINT + "/users/update",
+      { firstname, lastname, organisation },
+      this.httpOptions
+    );
   }
 
   /**

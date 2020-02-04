@@ -7,9 +7,9 @@
 
   <span class="nav-tool-items" *ngIf="isLoggedInVar">
 
-    <button mat-button routerLink="dashboard" routerLinkActive="dashboard">
+    <!-- <button mat-button routerLink="dashboard" routerLinkActive="dashboard">
       <mat-icon>dashboard</mat-icon> Dashboard
-    </button>
+    </button> -->
 
 
     <button mat-button [matMenuTriggerFor]="assignments">
@@ -20,7 +20,7 @@
       <a mat-menu-item routerLink="view-assignment" routerLinkActive="active">View Assignments</a>
       <a mat-menu-item routerLink="view-addassignment" routerLinkActive="active" [disabled]="userType=='candidate'">Create Assignment</a>
       <a mat-menu-item routerLink="submit-assignment" routerLinkActive="active" [disabled]="userType=='evaluator'">Submit Assignment</a>
-      <a mat-menu-item routerLink="view-program" routerLinkActive="active">View Program</a>
+      <!-- <a mat-menu-item routerLink="view-program" routerLinkActive="active">View Program</a> -->
       <a mat-menu-item routerLink="view-score" routerLinkActive="active" [disabled]="userType=='evaluator'">Score</a>
     </mat-menu>
 

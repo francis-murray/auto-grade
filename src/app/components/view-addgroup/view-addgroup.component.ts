@@ -31,7 +31,7 @@ export class ViewAddgroupComponent implements OnInit {
         this.snackBar.open(error.error.error, "Close", {
           duration: 2000
         });
-        console.log(error);
+        this.router.navigate(["/user-info"]);
       }
     );
   }

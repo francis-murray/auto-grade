@@ -25,7 +25,7 @@
     </mat-menu>
 
     <button mat-button [matMenuTriggerFor]="groups" *ngIf="userType=='evaluator'">
-      <mat-icon>school</mat-icon> Candidates
+      <mat-icon>group</mat-icon> Groups
     </button>
     <mat-menu #groups="matMenu">
       <a mat-menu-item routerLink="view-addgroup" routerLinkActive="active" [disabled]="userType=='candidate'">Add Group</a>

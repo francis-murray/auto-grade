@@ -40,14 +40,12 @@ export class TopMenuComponent implements OnInit {
         this.dataFromServer = data;
         this.userType = this.dataFromServer.user_data.type;
         console.log("this.userType", this.userType);
-        // localStorage.setItem("user_data", this.dataFromServer.user_data.type);
       });
     }
     console.log("******** top-menu variables ********");
     console.log("*  this.authService.isLoggedIn()", this.authService.isLoggedIn());
     console.log("*  isLoggedInVar: ", this.isLoggedInVar);
     console.log("*  localStorage auth_token: ", localStorage.getItem("auth_token"));
-    // console.log("*  localStorage auth_token: ", localStorage.getItem("user_data"));
     console.log("************************************");
   }
 

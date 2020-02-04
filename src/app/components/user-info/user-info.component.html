@@ -34,8 +34,7 @@
         <input matInput placeholder="Premium" value="Thank you for being a premium user!" disabled>
       </mat-form-field>
 
-
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="dataFromServer.type === 'evaluator'">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="dataFromServer.user_data.type === 'evaluator'">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Groups

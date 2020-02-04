@@ -55,7 +55,6 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
     ViewCalendarComponent,
     ViewScoreComponent,
     ViewProgramComponent,
-    // AuthComponent,
     UserInfoComponent,
     ViewAddgroupComponent,
     ViewAddassignmentComponent,

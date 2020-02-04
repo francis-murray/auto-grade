@@ -7,30 +7,35 @@
     <mat-card-content>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="First Name" [(ngModel)]="dataFromServer.user_data.firstname">
+        <input matInput placeholder="First Name" [(ngModel)]="dataFromServer.user_data.firstname" disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Last Name" [(ngModel)]='dataFromServer.user_data.lastname'>
+        <input matInput placeholder="Last Name" [(ngModel)]='dataFromServer.user_data.lastname' disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email" [(ngModel)]='dataFromServer.user_data.email'>
+        <input matInput placeholder="Email" [(ngModel)]='dataFromServer.user_data.email' disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Type" [(ngModel)]='dataFromServer.user_data.type'>
+        <input matInput placeholder="Type" [(ngModel)]='dataFromServer.user_data.type' disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Created Timestamp" [(ngModel)]='createdDate'>
+        <input matInput placeholder="Created Timestamp" [(ngModel)]='createdDate' disabled>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Corrected Programs Left" [(ngModel)]='dataFromServer.user_data.corrected_programs_left'>
+      <mat-form-field class="example-full-width" *ngIf="dataFromServer.type === 'evaluator'">
+        <input matInput placeholder="Corrected Programs Left" [(ngModel)]='dataFromServer.user_data.corrected_programs_left' disabled>
       </mat-form-field>
 
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-form-field class="example-full-width" *ngIf="premium && dataFromServer.type === 'evaluator'">
+        <input matInput placeholder="Premium" value="Thank you for being a premium user!" disabled>
+      </mat-form-field>
+
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="dataFromServer.type === 'evaluator'">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Groups
@@ -42,8 +47,8 @@
         <p *ngFor="let group of dataFromServer.user_data.groups">{{group}}</p>
       </mat-expansion-panel>
 
-      <div class = "paypal" *ngIf="!premium">
-        <p>Passer Premium</p>
+      <div class="paypal" *ngIf="!premium">
+        <p>Get Premium Account</p>
         <ngx-paypal [config]="payPalConfig1"></ngx-paypal>
       </div>
     </mat-card-content>

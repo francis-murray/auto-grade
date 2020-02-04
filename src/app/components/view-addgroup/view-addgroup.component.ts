@@ -21,7 +21,7 @@ export class ViewAddgroupComponent implements OnInit {
     this.groupsService.createGroup(this.name).subscribe(
       response => {
         this.isFetching = false;
-        this.snackBar.open(this.name + " successfully created!", "Close", {
+        this.snackBar.open("Group " + this.name + " successfully created!", "Close", {
           duration: 2000
         });
         this.router.navigate(["/user-info"]);

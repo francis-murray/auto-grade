@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Evaluator } from "src/app/models/user.model";
+import { Evaluator, User } from "src/app/models/user.model";
 import { UsersService } from "src/app/services/users.service";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
   roles: any = ["Evaluator", "Candidate"];
-  evaluator = {} as Evaluator;
+  user = {} as User;
   selectedRole: string;
 
   isFetching = false;
@@ -20,32 +20,60 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
-  onEvalRegister() {
+  onUserRegister() {
     this.isFetching = true;
-    this.usersService
-      .registerEvaluator(
-        this.evaluator.firstname,
-        this.evaluator.lastname,
-        this.evaluator.email,
-        this.evaluator.password,
-        this.evaluator.organisation
-      )
-      .subscribe(
-        responseData => {
-          this.isFetching = false;
-          console.log(responseData);
-          this.snackBar.open("Successful Registration! Please sign in", "Close", {
-            duration: 2000
-          });
-          this.router.navigate(["/login"]);
-        },
-        error => {
-          this.isFetching = false;
-          this.snackBar.open(error.error.error, "Close", {
-            duration: 2000
-          });
-          console.log(error);
-        }
-      );
+    if (this.selectedRole === "Candidate") {
+      this.usersService
+        .registerCandidate(
+          this.user.firstname,
+          this.user.lastname,
+          this.user.email,
+          this.user.password,
+          this.user.organisation
+        )
+        .subscribe(
+          responseData => {
+            this.isFetching = false;
+            console.log(responseData);
+            this.snackBar.open("Successful Registration! Please sign in", "Close", {
+              duration: 2000
+            });
+            this.router.navigate(["/login"]);
+          },
+          error => {
+            this.isFetching = false;
+            this.snackBar.open(error.error.error, "Close", {
+              duration: 2000
+            });
+            console.log(error);
+          }
+        );
+    } else if (this.selectedRole === "Evaluator") {
+      this.usersService
+        .registerEvaluator(
+          this.user.firstname,
+          this.user.lastname,
+          this.user.email,
+          this.user.password,
+          this.user.organisation
+        )
+        .subscribe(
+          responseData => {
+            this.isFetching = false;
+            console.log(responseData);
+            this.snackBar.open("Successful Registration! Please sign in", "Close", {
+              duration: 2000
+            });
+            this.router.navigate(["/login"]);
+          },
+          error => {
+            this.isFetching = false;
+            this.snackBar.open(error.error.error, "Close", {
+              duration: 2000
+            });
+            console.log(error);
+          }
+        );
+    }
   }
 }

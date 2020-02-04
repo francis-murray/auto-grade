@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Evaluator, Candidate } from "../models/user.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { AuthResponse } from "./auth.service";
@@ -19,7 +18,6 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  //
   /**
    * Function that sends a POST request to the api and returns an response containing
    * a status code and an API KEY, which will allow the user to perform secured requests
@@ -27,33 +25,10 @@ export class UsersService {
    * @param password user's password
    */
   authenticateUser(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(
-      this.apiBasePath + "/users/authenticate",
-      {
-        email: email,
-        password: password
-      }
-    );
-  }
-
-  /**
-   * Register as a candidate after that the evaluator added the candidate
-   * @param candidate candidate instance
-   */
-  registerCandidate(candidate: Candidate) {
-    return this.http.put(
-      this.apiBasePath +
-        "/users/candidate/confirmation/" +
-        localStorage.getItem("auth_token"),
-      candidate
-    );
-  }
-
-  /**
-   * Delete by a candidate to delete his current account. Requires an authentication token.
-   */
-  deleteCandidate() {
-    // not implemented yet
+    return this.http.post<AuthResponse>(this.apiBasePath + "/users/authenticate", {
+      email: email,
+      password: password
+    });
   }
 
   /**
@@ -76,12 +51,7 @@ export class UsersService {
    * This route allows you to confirm an evaluator account
    */
   confirmEvaluator() {
-    return this.http.put(
-      this.apiBasePath +
-        "/users/evaluator/confirmation/" +
-        localStorage.getItem("auth_token"),
-      {}
-    );
+    return this.http.put(this.apiBasePath + "/users/evaluator/confirmation/" + localStorage.getItem("auth_token"), {});
   }
 
   /**
@@ -92,14 +62,26 @@ export class UsersService {
    * @param password of evaluator
    * @param organisation of evaluator
    */
-  registerEvaluator(
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    organisation: string
-  ) {
+  registerEvaluator(firstName: string, lastName: string, email: string, password: string, organisation: string) {
     return this.http.post(this.apiBasePath + "/users/evaluator/register", {
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
+      organisation: organisation
+    });
+  }
+
+  /**
+   * Register as a candidate
+   * @param firstName of candidate
+   * @param lastName of candidate
+   * @param email of candidate
+   * @param password of candidate
+   * @param organisation of candidate
+   */
+  registerCandidate(firstName: string, lastName: string, email: string, password: string, organisation: string) {
+    return this.http.post(this.apiBasePath + "/users/candidate/register", {
       firstname: firstName,
       lastname: lastName,
       email: email,
@@ -113,10 +95,7 @@ export class UsersService {
    * Requires an authentication token.
    */
   getUserInfo() {
-    return this.http.get(
-      this.apiBasePath + "/users/get/info",
-      this.httpOptions
-    );
+    return this.http.get(this.apiBasePath + "/users/get/info", this.httpOptions);
   }
 
   /**
@@ -127,18 +106,19 @@ export class UsersService {
    * @param organisation User's orgnanisation
    */
   updateUser(firstname: string, lastname: string, organisation: string) {
-    return this.http.put(
-      this.apiBasePath + "/users/update",
-      { firstname, lastname, organisation },
-      this.httpOptions
-    );
+    return this.http.put(this.apiBasePath + "/users/update", { firstname, lastname, organisation }, this.httpOptions);
+  }
+
+  /**
+   * Delete by a candidate to delete his current account. Requires an authentication token.
+   */
+  deleteCandidate() {
+    // not implemented yet
   }
 
   /** Valide transaction Paypal **/
-/*
-  validetrans(order_id : string) : Observable<any>{
-    this.http.put(this.apiBasePath + "/users/update",{
 
-    })
-  }*/
+  validetrans(order_id : string) : Observable<any>{
+    return this.http.put(this.apiBasePath + "/users/evaluator/validate_trans/" + order_id,);
+  }
 }

@@ -6,6 +6,7 @@ export interface User {
   confirmed?: boolean;
   type: string;
   created_timestamp: number;
+  organisation: string;
 }
 
 export enum UserTypeEnum {
@@ -14,7 +15,6 @@ export enum UserTypeEnum {
 }
 
 export interface Evaluator extends User {
-  organisation: string;
   corrected_programs_left: number;
   groupsInCharge: Array<string>;
   assignmentsCreated: Array<string>;

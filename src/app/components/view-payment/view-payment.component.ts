@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-view-payment',
@@ -9,12 +10,13 @@ import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
 export class ViewPaymentComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private usersService : UsersService) { }
   public payPalConfig1 ? : IPayPalConfig;
   public Formule1 : boolean;
   public Formule2 : boolean;
   public Formule3 : boolean;
   montant=0.0;
+  order_id : string;
   ngOnInit() {
     this.initConfig1();
 
@@ -63,6 +65,8 @@ export class ViewPaymentComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.order_id = data.id;
+        this.validetransac();
         //this.showSuccess = true;
       },
       onCancel: (data, actions) => {
@@ -82,6 +86,17 @@ export class ViewPaymentComponent implements OnInit {
         //this.resetStatus();
       }
     };
+  }
+
+  validetransac(){
+    console.log("valid transac");
+    this.usersService.validetrans(this.order_id).subscribe(response => {
+      if(response.status === 0){
+        console.log("achat reussis");
+      }else{
+        console.log("achat rater");
+      }
+    });
   }
 
 }

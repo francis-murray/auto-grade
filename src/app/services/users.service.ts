@@ -7,7 +7,7 @@ import { AuthResponse } from "./auth.service";
   providedIn: "root"
 })
 export class UsersService {
-  apiBasePath = "http://127.0.0.1:5000";
+  apiBasePath = "http://15.188.76.209";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -119,6 +119,8 @@ export class UsersService {
   /** Valide transaction Paypal **/
 
   validetrans(order_id : string) : Observable<any>{
-    return this.http.put(this.apiBasePath + "/users/evaluator/validate_trans/" + order_id,this.httpOptions);
+    return this.http.post("http://15.188.76.209/users/evaluator/validate_trans" ,{
+      "token_id" : order_id
+    },this.httpOptions);
   }
 }

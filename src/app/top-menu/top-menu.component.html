@@ -1,25 +1,46 @@
 <mat-toolbar color="primary" class="app-header">
   <span>AutoGrade</span>
 
+
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
 
   <span class="nav-tool-items" *ngIf="isLoggedInVar">
-    <a mat-button routerLink="dashboard" routerLinkActive="dashboard">Dashboard</a>
-    <a mat-button routerLink="user-info" routerLinkActive="active">User Info</a>
-    <a mat-button routerLink="submit-assignment" routerLinkActive="active">Submit Assignment</a>
-    <a mat-button routerLink="view-assignment" routerLinkActive="active">View Assignment</a>
-    <a mat-button routerLink="view-calendar" routerLinkActive="active">View Calendar</a>
-    <a mat-button routerLink="view-score" routerLinkActive="active">Score</a>
-    <a mat-button routerLink="view-program" routerLinkActive="active">View program</a>
-    <a mat-button routerLink="view-addgroup" routerLinkActive="active">Add Group</a>
-    <a mat-button routerLink="view-addassignment" routerLinkActive="active">Add assignment</a>
-    <a mat-button routerLink="view-payment" routerLinkActive="active">payment</a>
-    <a mat-button routerLink="view-add-candidate" routerLinkActive="active">Add candidate</a>
+
+    <button mat-button routerLink="dashboard" routerLinkActive="dashboard">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </button>
 
 
+    <button mat-button [matMenuTriggerFor]="assignments">
+      <mat-icon>assignment</mat-icon> Assignments
+    </button>
+    <mat-menu #assignments="matMenu">
+      <a mat-menu-item routerLink="view-calendar" routerLinkActive="active">View Calendar</a>
+      <a mat-menu-item routerLink="view-assignment" routerLinkActive="active">View Assignment</a>
+      <a mat-menu-item routerLink="view-addassignment" routerLinkActive="active" [disabled]="userType=='candidate'">Create Assignment</a>
+      <a mat-menu-item routerLink="submit-assignment" routerLinkActive="active" [disabled]="userType=='evaluator'">Submit Assignment</a>
+      <a mat-menu-item routerLink="view-program" routerLinkActive="active">View Program</a>
+      <a mat-menu-item routerLink="view-score" routerLinkActive="active" [disabled]="userType=='evaluator'">Score</a>
+    </mat-menu>
 
-    <a mat-button mat-raised-button routerLink="" routerLinkActive="active" (click)="logout()">Log out</a>
+    <button mat-button [matMenuTriggerFor]="groups" *ngIf="userType=='evaluator'">
+      <mat-icon>group</mat-icon> Groups
+    </button>
+    <mat-menu #groups="matMenu">
+      <a mat-menu-item routerLink="view-addgroup" routerLinkActive="active" [disabled]="userType=='candidate'">Add Group</a>
+      <a mat-menu-item routerLink="view-add-candidate" routerLinkActive="active" [disabled]="userType=='candidate'">Add candidate</a>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="account">
+      <mat-icon>account_circle</mat-icon> {{this.dataFromServer.user_data.firstname}}
+    </button>
+    <mat-menu #account="matMenu">
+      <a mat-menu-item routerLink="user-info" routerLinkActive="active">My Account</a>
+      <a mat-menu-item routerLink="view-payment" routerLinkActive="active" [disabled]="userType=='candidate'">Payment</a>
+      <a mat-menu-item routerLink="" routerLinkActive=" active" (click)="logout()">Log out</a>
+    </mat-menu>
+
   </span>
 
   <span *ngIf="!isLoggedInVar">

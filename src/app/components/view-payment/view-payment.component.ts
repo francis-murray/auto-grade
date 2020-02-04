@@ -10,7 +10,7 @@ import {UsersService} from "../../services/users.service";
 export class ViewPaymentComponent implements OnInit {
 
 
-  constructor(private usersService : UsersService) { }
+  constructor(private usersService : UsersService, ) { }
   public payPalConfig1 ? : IPayPalConfig;
   public Formule1 : boolean;
   public Formule2 : boolean;
@@ -98,5 +98,26 @@ export class ViewPaymentComponent implements OnInit {
       }
     });
   }
+
+  montant1(){
+
+    this.montant = 10;
+    console.log(this.montant);
+    this.Formule2 = false;
+    this.Formule3 = false;
+  }
+  montant2(){
+    this.montant = 20;
+    console.log(this.montant);
+    this.Formule1 = false;
+    this.Formule3 = false;
+  }
+  montant3(){
+    this.montant = 50;
+    console.log(this.montant);
+    this.Formule1 = false;
+    this.Formule2 = false;
+  }
+
 
 }

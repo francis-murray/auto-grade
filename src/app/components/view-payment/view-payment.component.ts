@@ -90,11 +90,11 @@ export class ViewPaymentComponent implements OnInit {
 
   validetransac(){
     console.log("valid transac");
-    this.usersService.validetrans(this.order_id).subscribe(response => {
+    this.usersService.validetranspremium(this.order_id).subscribe(response => {
       if(response.status === 0){
-        console.log("achat reussis");
+        console.log("achat premium reussis");
       }else{
-        console.log("achat rater");
+        console.log("achat premium rater");
       }
     });
   }

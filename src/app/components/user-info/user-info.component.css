@@ -121,3 +121,14 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.Premium{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.paypal{
+  margin-top: 10px;
+  border : 2px solid black ;
+  padding: 10px;
+}

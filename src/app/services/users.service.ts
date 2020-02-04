@@ -94,7 +94,7 @@ export class UsersService {
    * This route allow current user to retrieve his data, Evaluators and candidates can call this route.
    * Requires an authentication token.
    */
-  getUserInfo() {
+  getUserInfo() : Observable<any>{
     return this.http.get(this.apiBasePath + "/users/get/info", this.httpOptions);
   }
 
@@ -121,6 +121,12 @@ export class UsersService {
   validetrans(order_id : string) : Observable<any>{
     return this.http.post("http://15.188.76.209/users/evaluator/validate_trans" ,{
       "token_id" : order_id
+    },this.httpOptions);
+  }
+
+  validetranspremium(order_id : string) : Observable<any>{
+    return this.http.post("http://15.188.76.209/users/evaluator/validate_premium" ,{
+      "order_id" : order_id
     },this.httpOptions);
   }
 }

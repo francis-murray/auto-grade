@@ -42,6 +42,10 @@
         <p *ngFor="let group of dataFromServer.user_data.groups">{{group}}</p>
       </mat-expansion-panel>
 
+      <div class = "paypal" *ngIf="!premium">
+        <p>Passer Premium</p>
+        <ngx-paypal [config]="payPalConfig1"></ngx-paypal>
+      </div>
     </mat-card-content>
   </mat-card>
   <div *ngIf="isLoading" class="loading-indicator">

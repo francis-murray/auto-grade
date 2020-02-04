@@ -9,6 +9,7 @@ import { ICreateOrderRequest, IPayPalConfig } from "ngx-paypal";
 })
 export class UserInfoComponent implements OnInit {
   public payPalConfig1?: IPayPalConfig;
+  panelOpenState = false;
   order_id = "";
   isLoading = false;
   createdDate: Date;

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UsersService } from "src/app/services/users.service";
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
 
+
 @Component({
   selector: "app-user-info",
   templateUrl: "./user-info.component.html",

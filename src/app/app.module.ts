@@ -10,7 +10,13 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AngularMaterialModule } from "./angular-material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { MatExpansionModule, MatSnackBarModule, MatProgressSpinnerModule, MatCheckboxModule } from "@angular/material";
+import {
+  MatExpansionModule,
+  MatSnackBarModule,
+  MatProgressSpinnerModule,
+  MatCheckboxModule,
+  MatMenuModule
+} from "@angular/material";
 
 /* Forms Module */
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -81,7 +87,8 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
         blacklistedRoutes: ["localhost/auth/login"]
       }
     }),
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

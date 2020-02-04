@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { UsersService } from "src/app/services/users.service";
-import { Evaluator } from "@angular/compiler-cli/src/metadata/evaluator";
 
 @Component({
   selector: "app-user-info",
@@ -37,8 +36,9 @@ export class UserInfoComponent implements OnInit {
 
       this.createdDate = new Date(this.dataFromServer.user_data.created_timestamp * 1000);
 
-      console.log("dataFromServer", this.dataFromServer);
+      localStorage.setItem("user_type", this.dataFromServer.user_data.type);
 
+      console.log("dataFromServer", this.dataFromServer);
     }),
       error => {
         this.isLoading = false;

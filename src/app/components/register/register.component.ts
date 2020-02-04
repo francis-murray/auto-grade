@@ -4,6 +4,7 @@ import { UsersService } from "src/app/services/users.service";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
+import { AuthService, AuthResponse } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-register",
@@ -14,10 +15,16 @@ export class RegisterComponent implements OnInit {
   roles: any = ["Evaluator", "Candidate"];
   user = {} as User;
   selectedRole: string;
+  dataFromServer: any;
 
   isLoading = false;
 
-  constructor(private usersService: UsersService, private snackBar: MatSnackBar, private router: Router) {}
+  constructor(
+    private usersService: UsersService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
 
@@ -41,10 +48,11 @@ export class RegisterComponent implements OnInit {
           responseData => {
             this.isLoading = false;
             console.log(responseData);
-            this.snackBar.open("Successful Registration! Please sign in", "Close", {
+            this.snackBar.open("Successful Registration!", "Close", {
               duration: 2000
             });
-            this.router.navigate(["/login"]);
+            this.dataFromServer = responseData;
+            this.authService.setUser(this.dataFromServer);
           },
           error => {
             this.isLoading = false;
@@ -73,10 +81,11 @@ export class RegisterComponent implements OnInit {
           responseData => {
             this.isLoading = false;
             console.log(responseData);
-            this.snackBar.open("Successful Registration! Please sign in", "Close", {
+            this.snackBar.open("Successful Registration!", "Close", {
               duration: 2000
             });
-            this.router.navigate(["/login"]);
+            this.dataFromServer = responseData;
+            this.authService.setUser(this.dataFromServer);
           },
           error => {
             this.isLoading = false;

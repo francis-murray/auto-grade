@@ -50,4 +50,8 @@ export class AssignementsService {
 
     return this.http.post(GlobalVariables.API_ENDPOINT + "/assignments/candidate/submit", fd, this.httpOptions);
   }
+
+  getAllAssignmentsPerEvaluator(): Observable<any> {
+    return this.http.get(GlobalVariables.API_ENDPOINT + "/assignments/evaluator/get/all", this.httpOptions);
+  }
 }

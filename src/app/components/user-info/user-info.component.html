@@ -1,7 +1,7 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header>
-      <mat-card-title>User Info</mat-card-title>
+      <mat-card-title>My Account</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
@@ -23,11 +23,11 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Created Timestamp" [(ngModel)]='createdDate' disabled>
+        <input matInput placeholder="User Registration Date" [(ngModel)]='createdDate' disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" *ngIf="dataFromServer.user_data.type === 'evaluator'">
-        <input matInput placeholder="Corrected Programs Left" [(ngModel)]='dataFromServer.user_data.corrected_programs_left' disabled>
+        <input matInput placeholder="Free corrections left with your trial account" [(ngModel)]='dataFromServer.user_data.corrected_programs_left' disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" *ngIf="premium && dataFromServer.type === 'evaluator'">

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 
 export interface AuthResponse {
   status: number;
+  confirm_token?: string;
   auth_token: string;
 }
 

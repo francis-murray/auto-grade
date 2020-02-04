@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-view-payment',
@@ -9,12 +10,13 @@ import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
 export class ViewPaymentComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private usersService : UsersService, ) { }
   public payPalConfig1 ? : IPayPalConfig;
   public Formule1 : boolean;
   public Formule2 : boolean;
   public Formule3 : boolean;
   montant=0.0;
+  order_id : string;
   ngOnInit() {
     this.initConfig1();
 
@@ -63,6 +65,8 @@ export class ViewPaymentComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.order_id = data.id;
+        this.validetransac();
         //this.showSuccess = true;
       },
       onCancel: (data, actions) => {
@@ -76,10 +80,44 @@ export class ViewPaymentComponent implements OnInit {
         //this.showError = true;
       },
       onClick: (data, actions) => {
+        console.log(this.montant)
         console.log('onClick', data, actions);
+
         //this.resetStatus();
       }
     };
   }
+
+  validetransac(){
+    console.log("valid transac");
+    this.usersService.validetranspremium(this.order_id).subscribe(response => {
+      if(response.status === 0){
+        console.log("achat premium reussis");
+      }else{
+        console.log("achat premium rater");
+      }
+    });
+  }
+
+  montant1(){
+
+    this.montant = 10;
+    console.log(this.montant);
+    this.Formule2 = false;
+    this.Formule3 = false;
+  }
+  montant2(){
+    this.montant = 20;
+    console.log(this.montant);
+    this.Formule1 = false;
+    this.Formule3 = false;
+  }
+  montant3(){
+    this.montant = 50;
+    console.log(this.montant);
+    this.Formule1 = false;
+    this.Formule2 = false;
+  }
+
 
 }

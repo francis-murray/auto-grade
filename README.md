@@ -1,27 +1,32 @@
 # AutoGradeGui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+This application is the Graphic User Interface for the Auto Grade Application. 
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Install npm
 
-## Build
+npm (Node package manager) is distributed with Node.js, which means that when you download Node.js, you automatically get npm installed on your computer.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Donwload Node.js and npm: [Node.js](https://nodejs.org/en/)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Install Angular CLI
 
-## Running end-to-end tests
+Install the Angular Command Line Interface using the npm package manager:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`npm install -g @angular/cli`
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Install AutoGradeGui dependencies
+
+Install the project dependencies, by running the following command at the root of the project.
+
+`npm install`
+
+
+### Start the application
+
+Run `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
